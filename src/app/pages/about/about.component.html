@@ -74,40 +74,96 @@
 <!-- ════════════════════════════════════════════════
      3. TEAM GRID — zoom-in on scroll + hover scale
      ════════════════════════════════════════════════ -->
-<section class="team-section">
-  <div class="team-section__wrapper">
-    <div class="team-section__header" data-aos="fade-up">
-      <p class="section-label">The People</p>
-      <h2 class="section-title">Meet Our Team</h2>
+<!-- ════════════════════════════════════════════════
+     3. CEO SECTION — premium leadership highlight
+════════════════════════════════════════════════ -->
+<!-- ════════════════════════════════════════════════
+     CEO SECTION — COMPLETE (Based on your card)
+════════════════════════════════════════════════ -->
+<section class="ceo-section">
+  <div class="ceo-section__wrapper">
+
+    <!-- Header -->
+    <div class="ceo-section__header" data-aos="fade-up">
+      <p class="section-label">Leadership</p>
+      <h2 class="section-title">Message from the CEO</h2>
       <div class="section-divider"></div>
     </div>
 
-    <div class="team-section__grid">
-      @for (member of teamMembers; track member.name; let i = $index) {
-        <div class="team-card"
-             data-aos="zoom-in"
-             [attr.data-aos-delay]="i * 100"
-             data-aos-duration="700">
-          <div class="team-card__img-wrap">
-            <img
-              [appImageLoader]="member.image"
-              [fallbackImage]="'/building-bg.png'"
-              [alt]="member.name"
-              class="team-card__img"
-              loading="lazy" />
-            <div class="team-card__overlay"></div>
-            <div class="team-card__social">
-              <a href="#" aria-label="LinkedIn profile"><i class="bi bi-linkedin"></i></a>
-              <a href="#" aria-label="Email"><i class="bi bi-envelope"></i></a>
-            </div>
-          </div>
-          <div class="team-card__info">
-            <p class="team-card__name">{{ member.name }}</p>
-            <p class="team-card__role">{{ member.role }}</p>
-          </div>
+    <!-- Top Profile -->
+    <div class="ceo-profile">
+
+      <!-- Image -->
+      <div class="ceo-profile__image" data-aos="fade-right">
+        <img
+          [appImageLoader]="ceo.image"
+          [fallbackImage]="'/building-bg.png'"
+          [alt]="ceo.name"
+          class="ceo-profile__img" />
+      </div>
+
+      <!-- Info -->
+      <div class="ceo-profile__info" data-aos="fade-left">
+
+        <p class="ceo-profile__role">{{ ceo.role }}</p>
+        <h3 class="ceo-profile__name">{{ ceo.name }}</h3>
+
+        <!-- Contact -->
+        <div class="ceo-profile__contact">
+          <p>
+            <i class="bi bi-telephone"></i>
+            Dubai: {{ ceo.phones.dubai }}
+          </p>
+          <p>
+            <i class="bi bi-telephone"></i>
+            China: {{ ceo.phones.china }}
+          </p>
         </div>
-      }
+
+        <!-- Company -->
+        <h4 class="ceo-profile__company">{{ ceo.company }}</h4>
+
+        <!-- Message -->
+        <p class="ceo-profile__message">
+          {{ ceo.message }}
+        </p>
+
+      </div>
     </div>
+
+    <!-- Services -->
+    <div class="ceo-services" data-aos="fade-up">
+
+      <h3 class="ceo-services__title">Our Core Services</h3>
+
+      <div class="ceo-services__grid">
+        @for (service of ceo.services; track service) {
+          <div class="ceo-services__item">
+            <i class="bi bi-check2-circle"></i>
+            <span>{{ service }}</span>
+          </div>
+        }
+      </div>
+
+    </div>
+
+    <!-- Footer Contact -->
+    <div class="ceo-footer" data-aos="fade-up">
+
+      <div class="ceo-footer__content">
+        <p>
+          <i class="bi bi-envelope"></i>
+          {{ ceo.email }}
+        </p>
+
+        <p>
+          <i class="bi bi-globe"></i>
+          {{ ceo.website }}
+        </p>
+      </div>
+
+    </div>
+
   </div>
 </section>
 

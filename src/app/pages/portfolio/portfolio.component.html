@@ -47,6 +47,7 @@
   <div class="projects-grid" [class.is-filtering]="isFiltering()">
     @for (project of filteredProjects(); track project.id; let i = $index) {
       <div
+        
         class="project-card border-t-[3px] border-t-transparent transition-all duration-300"
         [ngClass]="getBorderColor(project.category)"
         (click)="openModal(project)"
