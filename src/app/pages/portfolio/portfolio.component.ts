@@ -18,14 +18,14 @@ import { LoadingService } from '../../shared/services/loading.service';
 export interface Project {
   id: number;
   title: string;
-  category: 'Flying Cars' | 'Robotics' | 'Food Processing' | 'Mining' | 'Battery Tech' | 'Battery Recycling' | 'Mold Design' | 'Injection Molding' | 'Quality Control' | 'Tool Maintenance' | 'Secondary Ops' | 'Logistics';
+  category: 'Medical Molds' | 'Packaging Molds' | 'Personal Care Molds' | 'Electronic Molds' | 'Automotive Molds' | 'Home Appliance Molds' | 'Special Molds';
   client: string;
   image: string;
   description: string;
   year: number;
 }
 
-export type FilterCategory = 'All' | 'Flying Cars' | 'Robotics' | 'Food Processing' | 'Mining' | 'Battery Tech' | 'Battery Recycling' | 'Mold Design' | 'Injection Molding' | 'Quality Control' | 'Tool Maintenance' | 'Secondary Ops' | 'Logistics';
+export type FilterCategory = 'All' | 'Medical Molds' | 'Packaging Molds' | 'Personal Care Molds' | 'Electronic Molds' | 'Automotive Molds' | 'Home Appliance Molds' | 'Special Molds';
 
 @Component({
   selector: 'app-portfolio',
@@ -43,18 +43,13 @@ export class Portfolio implements OnInit, AfterViewInit, OnDestroy {
   // ─── Filter State ────────────────────────────────────────────────────────────
   categories: FilterCategory[] = [
     'All',
-    'Flying Cars',
-    'Robotics',
-    'Food Processing',
-    'Mining',
-    'Battery Tech',
-    'Battery Recycling',
-    'Mold Design',
-    'Injection Molding',
-    'Quality Control',
-    'Tool Maintenance',
-    'Secondary Ops',
-    'Logistics'
+    'Medical Molds',
+    'Packaging Molds',
+    'Personal Care Molds',
+    'Electronic Molds',
+    'Automotive Molds',
+    'Home Appliance Molds',
+    'Special Molds'
   ];
   activeFilter = signal<FilterCategory>('All');
   isFiltering = signal(false);
@@ -64,224 +59,307 @@ export class Portfolio implements OnInit, AfterViewInit, OnDestroy {
   isModalOpen = signal(false);
 
   // ─── Project Data (Based on Your Services) ────────────────────────────────────
-  allProjects: Project[] = [
-    {
-      id: 1,
-      title: 'Electric VTOL Aircraft Development',
-      category: 'Flying Cars',
-      client: 'Arabian Flying Cars',
-      year: 2024,
-      image: 'https://images.unsplash.com/photo-1540962351504-03099e0a754b?auto=format&fit=crop&w=900&q=80',
-      description: 'AI-powered electric flying car with advanced aerospace engineering, autonomous navigation systems, and sustainable propulsion technology for urban air mobility.'
-    },
-    {
-      id: 2,
-      title: 'AI Robot Security System',
-      category: 'Robotics',
-      client: 'SecureBot Inc',
-      year: 2024,
-      image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=900&q=80',
-      description: 'Autonomous police robot with facial recognition, threat detection, and real-time surveillance capabilities for enhanced security operations.'
-    },
-    {
-      id: 3,
-      title: 'Hotel Service Robot Suite',
-      category: 'Robotics',
-      client: 'Smart Hotels Group',
-      year: 2023,
-      image: 'https://images.unsplash.com/photo-1563207153-f403bf289096?auto=format&fit=crop&w=900&q=80',
-      description: 'Integrated cleaning and delivery robots for hospitality industry with autonomous navigation, room service delivery, and sanitization systems.'
-    },
-    {
-      id: 4,
-      title: 'Industrial Seasoning System',
-      category: 'Food Processing',
-      client: 'SP Foods',
-      year: 2023,
-      image: 'https://images.unsplash.com/photo-1606787366850-de6330128bfc?auto=format&fit=crop&w=900&q=80',
-      description: 'Automated flavor coating and seasoning machinery with precision dosing, hygiene compliance, and high-speed production capabilities.'
-    },
-    {
-      id: 5,
-      title: 'Laser Coding Machinery Line',
-      category: 'Food Processing',
-      client: 'PackTech Solutions',
-      year: 2024,
-      image: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=900&q=80',
-      description: 'High-speed coding and marking systems for food packaging with batch tracking, expiry date printing, and quality assurance.'
-    },
-    {
-      id: 6,
-      title: 'Mineral Extraction Plant',
-      category: 'Mining',
-      client: 'GeoMinerals Corp',
-      year: 2023,
-      image: 'https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?auto=format&fit=crop&w=900&q=80',
-      description: 'Advanced ore processing facility with crushing, grinding, and separation systems for efficient mineral extraction and refinement.'
-    },
-    {
-      id: 7,
-      title: 'Lithium Battery Manufacturing Hub',
-      category: 'Battery Tech',
-      client: 'PowerCell Industries',
-      year: 2024,
-      image: 'https://images.unsplash.com/photo-1609146835228-d0f0b5f9d79a?auto=format&fit=crop&w=900&q=80',
-      description: 'Complete technology transfer for sodium-ion battery production with cleanroom facilities, electrode coating, and cell assembly lines.'
-    },
-    {
-      id: 8,
-      title: 'Battery Recycling Facility',
-      category: 'Battery Recycling',
-      client: 'EcoRecycle Ltd',
-      year: 2024,
-      image: 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&w=900&q=80',
-      description: 'Eco-friendly recycling plant for lead-acid, lithium, and cobalt batteries with material recovery rates exceeding 95% efficiency.'
-    },
-    {
-      id: 9,
-      title: 'Automotive Dashboard Tooling',
-      category: 'Mold Design',
-      client: 'Auto Components Inc',
-      year: 2023,
-      image: 'https://images.unsplash.com/photo-1581092918484-8313e1f7e8c4?auto=format&fit=crop&w=900&q=80',
-      description: 'Complex multi-cavity mold design with advanced CAD/CAM engineering, Moldflow analysis, and DFM optimization for automotive interiors.'
-    },
-    {
-      id: 10,
-      title: 'Medical Device Components',
-      category: 'Injection Molding',
-      client: 'MedTech Solutions',
-      year: 2024,
-      image: 'https://images.unsplash.com/photo-1579154204845-c5a9ab0a07aa?auto=format&fit=crop&w=900&q=80',
-      description: 'ISO-certified cleanroom injection molding of surgical-grade components with two-shot molding and Class 8 environmental controls.'
-    },
-    {
-      id: 11,
-      title: 'Precision CMM Inspection Lab',
-      category: 'Quality Control',
-      client: 'QualityFirst Manufacturing',
-      year: 2023,
-      image: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=900&q=80',
-      description: 'State-of-the-art quality validation facility with coordinate measuring machines, SPC monitoring, and IATF 16949 compliance.'
-    },
-    {
-      id: 12,
-      title: 'Tool Room Maintenance Center',
-      category: 'Tool Maintenance',
-      client: 'Precision Tooling Group',
-      year: 2024,
-      image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=900&q=80',
-      description: 'In-house tool maintenance facility with laser welding repair, predictive maintenance systems, and tool life extension programs.'
-    },
-    {
-      id: 13,
-      title: 'Ultrasonic Welding Assembly',
-      category: 'Secondary Ops',
-      client: 'Assembly Tech Ltd',
-      year: 2023,
-      image: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=900&q=80',
-      description: 'Value-added secondary operations including ultrasonic welding, pad printing, mechanical assembly, and custom packaging solutions.'
-    },
-    {
-      id: 14,
-      title: 'Global JIT Distribution Network',
-      category: 'Logistics',
-      client: 'Tradebone Group LLC',
-      year: 2024,
-      image: 'https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?auto=format&fit=crop&w=900&q=80',
-      description: 'Just-in-time delivery system with KANBAN inventory management, VMI integration, and multi-region export/import compliance.'
-    },
-    {
-      id: 15,
-      title: 'Urban Air Mobility Platform',
-      category: 'Flying Cars',
-      client: 'SkyTech Innovations',
-      year: 2025,
-      image: 'https://images.unsplash.com/photo-1473116763249-2faaef81ccda?auto=format&fit=crop&w=900&q=80',
-      description: 'Next-generation eVTOL infrastructure with AI flight management, charging stations, and air traffic integration systems.'
-    },
-    {
-      id: 16,
-      title: 'Mineral Processing Automation',
-      category: 'Mining',
-      client: 'SmartMine Technologies',
-      year: 2024,
-      image: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=900&q=80',
-      description: 'Automated mineral processing with AI-powered sorting, quality analysis, and environmental monitoring for sustainable mining operations.'
-    },
-    {
-      id: 17,
-      title: 'Solid-State Battery R&D Lab',
-      category: 'Battery Tech',
-      client: 'NextGen Energy',
-      year: 2025,
-      image: 'https://images.unsplash.com/photo-1602524201926-4e9f4fddc3b7?auto=format&fit=crop&w=900&q=80',
-      description: 'Advanced solid-state battery research facility with improved energy density, safety, and long lifecycle performance.'
-    },
-    {
-      id: 18,
-      title: 'EV Battery Recycling Line',
-      category: 'Battery Recycling',
-      client: 'GreenCycle Systems',
-      year: 2025,
-      image: 'https://images.unsplash.com/photo-1593941707882-a5bba2f3c5b2?auto=format&fit=crop&w=900&q=80',
-      description: 'Automated recycling line for electric vehicle batteries with material recovery optimization and environmental safety compliance.'
-    },
-    {
-      id: 19,
-      title: 'Consumer Electronics Mold Design',
-      category: 'Mold Design',
-      client: 'TechPlast Industries',
-      year: 2024,
-      image: 'https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=900&q=80',
-      description: 'High-precision mold design for mobile and consumer electronics with micro-tolerance engineering and rapid prototyping.'
-    },
-    {
-      id: 20,
-      title: 'Automotive Plastic Parts Production',
-      category: 'Injection Molding',
-      client: 'AutoForm Ltd',
-      year: 2025,
-      image: 'https://images.unsplash.com/photo-1616422285623-13ff0162193c?auto=format&fit=crop&w=900&q=80',
-      description: 'Mass production of automotive plastic components with high-speed injection molding machines and quality consistency.'
-    },
-    {
-      id: 21,
-      title: 'AI Vision Inspection System',
-      category: 'Quality Control',
-      client: 'VisionTech QA',
-      year: 2025,
-      image: 'https://images.unsplash.com/photo-1581091012184-7f0c5c4d85d0?auto=format&fit=crop&w=900&q=80',
-      description: 'AI-based defect detection system with real-time inspection, reducing human error and improving production quality.'
-    },
-    {
-      id: 22,
-      title: 'Predictive Tool Monitoring System',
-      category: 'Tool Maintenance',
-      client: 'SmartTools Inc',
-      year: 2025,
-      image: 'https://images.unsplash.com/photo-1581092334439-2f30e2f76b3c?auto=format&fit=crop&w=900&q=80',
-      description: 'IoT-based predictive maintenance system for tools with real-time wear monitoring and lifecycle tracking.'
-    },
-    {
-      id: 23,
-      title: 'Automated Assembly Line Integration',
-      category: 'Secondary Ops',
-      client: 'AssemblyPro Systems',
-      year: 2024,
-      image: 'https://images.unsplash.com/photo-1581091870627-3f9c9c1a64e4?auto=format&fit=crop&w=900&q=80',
-      description: 'End-to-end automation of assembly lines including robotic arms, conveyor systems, and packaging integration.'
-    },
-    {
-      id: 24,
-      title: 'Cold Chain Logistics System',
-      category: 'Logistics',
-      client: 'FreshLink Logistics',
-      year: 2025,
-      image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=80',
-      description: 'Temperature-controlled logistics system for perishable goods with real-time tracking and compliance monitoring.'
-    }
-  ];
+allProjects: Project[] = [
+  // ================= MEDICAL MOLDS =================
+  {
+    id: 1,
+    title: 'Test Tube Series',
+    category: 'Medical Molds',
+    client: 'MedTech',
+    year: 2024,
+    image: '/TestTubeSeries.webp',
+    description: '32/64/128 cavity molds with fully hot half valve gate system and large-scale production capability.'
+  },
+  {
+    id: 2,
+    title: 'SARS-CoV-2 Test',
+    category: 'Medical Molds',
+    client: 'BioLab',
+    year: 2024,
+    image: '/SARS-CoV-2Test.webp',
+    description: '32/16 cavity mold with optimized design and successful first-time assembly testing.'
+  },
+  {
+    id: 3,
+    title: 'PCR Plate Series',
+    category: 'Medical Molds',
+    client: 'HealthTech',
+    year: 2023,
+    image: '/PCRPlateSeries.webp',
+    description: '96-tube overflow runner system with 0.25mm thin-wall precision and 100+ mold experience.'
+  },
+  {
+    id: 4,
+    title: 'Reaction Cup Series',
+    category: 'Medical Molds',
+    client: 'LabPro',
+    year: 2023,
+    image: '/Reaction Cup Series.webp',
+    description: '64/32 cavity molds with hot valve gate, zero defects, and industry-leading cycle time.'
+  },
+  {
+    id: 5,
+    title: 'Vein Detained Needle',
+    category: 'Medical Molds',
+    client: 'MedCore',
+    year: 2023,
+    image: '/Vein Detained Needle.webp',
+    description: 'Advanced hot runner technology with 5x higher efficiency and high-temperature material support.'
+  },
+  {
+    id: 6,
+    title: 'Safe Blood Collection Set',
+    category: 'Medical Molds',
+    client: 'SafeMed',
+    year: 2024,
+    image: '/Safe Blood Collection Set.webp',
+    description: 'Quick development molds with low maintenance and fast production cycles.'
+  },
+  {
+    id: 7,
+    title: 'Luer Adapter',
+    category: 'Medical Molds',
+    client: 'PrecisionMed',
+    year: 2024,
+    image: '/Luer Adapter.webp',
+    description: 'High-quality adapter molds with emergency supply capability and high efficiency.'
+  },
+  {
+    id: 8,
+    title: 'Urinary Catheter',
+    category: 'Medical Molds',
+    client: 'CareMed',
+    year: 2023,
+    image: '/Urinary Catheter.webp',
+    description: 'Smart design molds minimizing downtime with reliable production performance.'
+  },
+  {
+    id: 9,
+    title: 'Syringes Series',
+    category: 'Medical Molds',
+    client: 'GlobalMed',
+    year: 2024,
+    image: '/Syringes Series.webp',
+    description: 'Multi-size syringe molds (1ml–60ml) with modular design and high efficiency.'
+  },
+  {
+    id: 10,
+    title: 'Safe Needle',
+    category: 'Medical Molds',
+    client: 'HealthLine',
+    year: 2024,
+    image: '/Safe Needle.png',
+    description: 'Long-life molds with high stability, intensive cooling, and short cycle time.'
+  },
+
+  // ================= PACKAGING =================
+  {
+    id: 11,
+    title: 'FT Cap',
+    category: 'Packaging Molds',
+    client: 'PackPro',
+    year: 2024,
+    image: '/FT Cap.webp',
+    description: '24+24 stack mold with hot runner system and high-speed production.'
+  },
+  {
+    id: 12,
+    title: 'Infant Formula Cap',
+    category: 'Packaging Molds',
+    client: 'NutriPack',
+    year: 2023,
+    image: '/Infant Formula.webp',
+    description: '4 or 4+4 cavity mold with fast version change and optimized cycle time.'
+  },
+  {
+    id: 13,
+    title: 'Water & Milk Cap',
+    category: 'Packaging Molds',
+    client: 'AquaPack',
+    year: 2023,
+    image: '/Water gallon & Milk cap.jpg',
+    description: 'Single and bi-injection molds with fast development capability.'
+  },
+  {
+    id: 14,
+    title: 'Juice & Sport Cap',
+    category: 'Packaging Molds',
+    client: 'FreshCap',
+    year: 2024,
+    image: '/Juice & Sport cap.webp',
+    description: '48+48 cavity stack mold with servo ejection and quick switching.'
+  },
+  {
+    id: 15,
+    title: 'Oil Cap with Pull Ring',
+    category: 'Packaging Molds',
+    client: 'OilPack',
+    year: 2023,
+    image: '/Oil cap with pull ring.jpg',
+    description: '32/48 cavity molds with high-speed production and precision design.'
+  },
+  {
+    id: 16,
+    title: 'Full Servo IMC FT Cap',
+    category: 'Packaging Molds',
+    client: 'AdvancedPack',
+    year: 2024,
+    image: '/Full servo IMC FT cap.jpg',
+    description: 'Servo-based IMC mold with unscrewing and slider integration.'
+  },
+  {
+    id: 17,
+    title: 'Flip Top Cap with TE',
+    category: 'Packaging Molds',
+    client: 'SmartPack',
+    year: 2024,
+    image: '/Flip Top Cap with TE.webp',
+    description: '32 cavity mold with in-mold closing and TE functionality.'
+  },
+
+  // ================= PERSONAL CARE =================
+  {
+    id: 18,
+    title: 'Electric Toothbrush',
+    category: 'Personal Care Molds',
+    client: 'CarePlus',
+    year: 2023,
+    image: '/Electric toothbrush series.webp',
+    description: 'Automated production molds with EOAT integration and precision finishing.'
+  },
+  {
+    id: 19,
+    title: 'Shaver Series',
+    category: 'Personal Care Molds',
+    client: 'GroomTech',
+    year: 2023,
+    image: '/Shaver series.jpg',
+    description: 'Efficient mold design with reduced cycle time and high durability.'
+  },
+  {
+    id: 20,
+    title: '2K Mold Series',
+    category: 'Personal Care Molds',
+    client: 'DualTech',
+    year: 2024,
+    image: '/2K molds series.webp',
+    description: 'Multi-material mold design ensuring strong adhesion and precision.'
+  },
+  {
+    id: 21,
+    title: 'Multi-Cavity Series',
+    category: 'Personal Care Molds',
+    client: 'PrecisionCare',
+    year: 2024,
+    image: '/Multi Cavities series.jpg',
+    description: 'High-precision molds with long lifecycle and consistent output.'
+  },
+
+  // ================= ELECTRONICS =================
+  {
+    id: 22,
+    title: 'Case & Cover',
+    category: 'Electronic Molds',
+    client: 'TechNova',
+    year: 2024,
+    image: '/Case&Cover.jpg',
+    description: 'High precision molds with strict tolerance and dimensional accuracy.'
+  },
+  {
+    id: 23,
+    title: 'Sockets',
+    category: 'Electronic Molds',
+    client: 'ElectroCore',
+    year: 2024,
+    image: '/Sockets.webp',
+    description: 'Multi-cavity socket molds with high consistency and durability.'
+  },
+  {
+    id: 24,
+    title: 'Cover Plates',
+    category: 'Electronic Molds',
+    client: 'PlateTech',
+    year: 2023,
+    image: '/Cover Plates.webp',
+    description: 'High polishing and textured finishing with stack mold expertise.'
+  },
+  {
+    id: 25,
+    title: '2K Electronic Mold',
+    category: 'Electronic Molds',
+    client: 'DualElec',
+    year: 2024,
+    image: '/2K molds.jpg',
+    description: 'Advanced 2K mold design for multi-material electronics.'
+  },
+  {
+    id: 26,
+    title: 'High-Temperature Tools',
+    category: 'Electronic Molds',
+    client: 'HeatTech',
+    year: 2024,
+    image: '/Multi Cavities&High terperature tools.jpg',
+    description: 'Precision molds for high-temperature applications with zero defects.'
+  },
+
+  // ================= AUTOMOTIVE =================
+  {
+    id: 27,
+    title: 'Truck Fender',
+    category: 'Automotive Molds',
+    client: 'AutoBuild',
+    year: 2023,
+    image: '/Truck Fender.jpg',
+    description: 'Heavy-duty molds designed for durability and large automotive parts.'
+  },
+  {
+    id: 28,
+    title: 'Instrument Panel',
+    category: 'Automotive Molds',
+    client: 'AutoTech',
+    year: 2023,
+    image: '/Instrument Panel.jpg',
+    description: 'Complex molds with high surface finish and 100+ project experience.'
+  },
+  {
+    id: 29,
+    title: 'Car Cross Beam',
+    category: 'Automotive Molds',
+    client: 'AutoLight',
+    year: 2024,
+    image: '/Car Cross Beam.jpg',
+    description: 'Lightweight integrated mold solutions for automotive structures.'
+  },
+
+  // ================= HOME APPLIANCE =================
+  {
+    id: 30,
+    title: 'Refrigerator Drawer',
+    category: 'Home Appliance Molds',
+    client: 'ApplianceCorp',
+    year: 2024,
+    image: '/Refrigerator Drawer.jpg',
+    description: 'High transparency molds with perfect finishing and T2 validation.'
+  },
+  {
+    id: 31,
+    title: 'Auto Mower',
+    category: 'Home Appliance Molds',
+    client: 'SmartHome',
+    year: 2024,
+    image: '/Auto Mower.jpg',
+    description: 'Complex structure molds with high precision and surface quality.'
+  },
+  {
+    id: 32,
+    title: 'Coffee Machine',
+    category: 'Home Appliance Molds',
+    client: 'KitchenTech',
+    year: 2024,
+    image: '/Coffee Machine.jpg',
+    description: 'High fitting accuracy molds for complex appliance components.'
+  }
+];
 
   // ─── Computed Filtered Projects ───────────────────────────────────────────────
   filteredProjects = computed(() => {
@@ -300,11 +378,7 @@ export class Portfolio implements OnInit, AfterViewInit, OnDestroy {
   // ─── Lifecycle ────────────────────────────────────────────────────────────────
   ngOnInit() {
     this.route.data.subscribe((data) => {
-      const resolved = data['data'];
-      if (resolved?.projects?.length) {
-        this.allProjects = resolved.projects;
-        this.cdr.detectChanges();
-      }
+      // Intentionally skipping resolved.projects to ensure the updated mold-focused local data is used.
     });
     this.loadingService.show();
     this.loadData();
@@ -379,36 +453,26 @@ export class Portfolio implements OnInit, AfterViewInit, OnDestroy {
   // ─── Helpers ──────────────────────────────────────────────────────────────────
   getCategoryIcon(cat: FilterCategory | string): string {
     const icons: Record<string, string> = {
-      'Flying Cars': '<i class="bi bi-airplane-engines"></i>',
-      'Robotics': '<i class="bi bi-robot"></i>',
-      'Food Processing': '<i class="bi bi-gear-wide-connected"></i>',
-      'Mining': '<i class="bi bi-minecart-loaded"></i>',
-      'Battery Tech': '<i class="bi bi-battery-charging"></i>',
-      'Battery Recycling': '<i class="bi bi-recycle"></i>',
-      'Mold Design': '<i class="bi bi-pencil-square"></i>',
-      'Injection Molding': '<i class="bi bi-stack"></i>',
-      'Quality Control': '<i class="bi bi-shield-check"></i>',
-      'Tool Maintenance': '<i class="bi bi-tools"></i>',
-      'Secondary Ops': '<i class="bi bi-box-seam"></i>',
-      'Logistics': '<i class="bi bi-truck"></i>'
+      'Medical Molds': '<i class="bi bi-bandaid"></i>',
+      'Packaging Molds': '<i class="bi bi-box-seam"></i>',
+      'Personal Care Molds': '<i class="bi bi-person-heart"></i>',
+      'Electronic Molds': '<i class="bi bi-cpu"></i>',
+      'Automotive Molds': '<i class="bi bi-car-front"></i>',
+      'Home Appliance Molds': '<i class="bi bi-house-heart"></i>',
+      'Special Molds': '<i class="bi bi-nut"></i>'
     };
     return icons[cat] || '<i class="bi bi-grid"></i>';
   }
 
   getBorderColor(cat: string): string {
     const borders: Record<string, string> = {
-      'Flying Cars': 'hover:border-t-sky-500',
-      'Robotics': 'hover:border-t-purple-500',
-      'Food Processing': 'hover:border-t-orange-500',
-      'Mining': 'hover:border-t-amber-600',
-      'Battery Tech': 'hover:border-t-green-500',
-      'Battery Recycling': 'hover:border-t-emerald-500',
-      'Mold Design': 'hover:border-t-blue-500',
-      'Injection Molding': 'hover:border-t-indigo-500',
-      'Quality Control': 'hover:border-t-red-500',
-      'Tool Maintenance': 'hover:border-t-yellow-500',
-      'Secondary Ops': 'hover:border-t-pink-500',
-      'Logistics': 'hover:border-t-cyan-500'
+      'Medical Molds': 'hover:border-t-sky-500',
+      'Packaging Molds': 'hover:border-t-orange-500',
+      'Personal Care Molds': 'hover:border-t-pink-500',
+      'Electronic Molds': 'hover:border-t-blue-500',
+      'Automotive Molds': 'hover:border-t-emerald-500',
+      'Home Appliance Molds': 'hover:border-t-amber-600',
+      'Special Molds': 'hover:border-t-purple-500'
     };
     return borders[cat] || 'hover:border-t-gray-500';
   }

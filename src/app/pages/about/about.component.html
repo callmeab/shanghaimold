@@ -80,88 +80,24 @@
 <!-- ════════════════════════════════════════════════
      CEO SECTION — COMPLETE (Based on your card)
 ════════════════════════════════════════════════ -->
-<section class="ceo-section">
-  <div class="ceo-section__wrapper">
+<section class="ceo-section py-20 bg-white">
+  <div class="max-w-4xl mx-auto px-6 text-center">
 
-    <!-- Header -->
-    <div class="ceo-section__header" data-aos="fade-up">
-      <p class="section-label">Leadership</p>
-      <h2 class="section-title">Message from the CEO</h2>
-      <div class="section-divider"></div>
+    <div class="mb-12" data-aos="fade-up">
+      <p class="text-amber-500 font-semibold uppercase tracking-widest text-sm">{{ ceo.role }}</p>
+      <h2 class="text-4xl md:text-5xl font-bold text-slate-800 mt-2">{{ ceo.name }}</h2>
+      <div class="w-16 h-1 bg-amber-500 mx-auto mt-6 rounded-full"></div>
     </div>
 
-    <!-- Top Profile -->
-    <div class="ceo-profile">
-
-      <!-- Image -->
-      <div class="ceo-profile__image" data-aos="fade-right">
-        <img
-          [appImageLoader]="ceo.image"
-          [fallbackImage]="'/building-bg.png'"
-          [alt]="ceo.name"
-          class="ceo-profile__img" />
-      </div>
-
-      <!-- Info -->
-      <div class="ceo-profile__info" data-aos="fade-left">
-
-        <p class="ceo-profile__role">{{ ceo.role }}</p>
-        <h3 class="ceo-profile__name">{{ ceo.name }}</h3>
-
-        <!-- Contact -->
-        <div class="ceo-profile__contact">
-          <p>
-            <i class="bi bi-telephone"></i>
-            Dubai: {{ ceo.phones.dubai }}
-          </p>
-          <p>
-            <i class="bi bi-telephone"></i>
-            China: {{ ceo.phones.china }}
-          </p>
-        </div>
-
-        <!-- Company -->
-        <h4 class="ceo-profile__company">{{ ceo.company }}</h4>
-
-        <!-- Message -->
-        <p class="ceo-profile__message">
-          {{ ceo.message }}
-        </p>
-
-      </div>
+    <div class="prose prose-lg text-slate-600 mx-auto text-center" data-aos="fade-up" data-aos-delay="100">
+      <p class="whitespace-pre-line leading-relaxed">{{ ceo.message }}</p>
     </div>
 
-    <!-- Services -->
-    <div class="ceo-services" data-aos="fade-up">
-
-      <h3 class="ceo-services__title">Our Core Services</h3>
-
-      <div class="ceo-services__grid">
-        @for (service of ceo.services; track service) {
-          <div class="ceo-services__item">
-            <i class="bi bi-check2-circle"></i>
-            <span>{{ service }}</span>
-          </div>
-        }
-      </div>
-
-    </div>
-
-    <!-- Footer Contact -->
-    <div class="ceo-footer" data-aos="fade-up">
-
-      <div class="ceo-footer__content">
-        <p>
-          <i class="bi bi-envelope"></i>
-          {{ ceo.email }}
-        </p>
-
-        <p>
-          <i class="bi bi-globe"></i>
-          {{ ceo.website }}
-        </p>
-      </div>
-
+    <div class="mt-12" data-aos="fade-up" data-aos-delay="200">
+      <p class="text-xs text-gray-400 uppercase tracking-widest mb-3 font-semibold">Get in touch directly</p>
+      <a href="mailto:{{ ceo.email }}" class="inline-flex items-center text-lg font-medium text-slate-800 hover:text-amber-500 transition-colors duration-300">
+        <i class="bi bi-envelope-fill mr-2 text-amber-500"></i>{{ ceo.email }}
+      </a>
     </div>
 
   </div>

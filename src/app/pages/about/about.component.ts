@@ -31,73 +31,12 @@ export class AboutComponent implements OnInit, AfterViewInit, OnDestroy {
   };
 
   ceo = {
-    name: 'Mian Abbad Farooq',
-    role: 'CEO & Co-Founder',
-    company: 'Tradebone Group LLC',
-  
-    phones: {
-      dubai: '+971 50 197 6265',
-      china: '+86 190 0665 2617'
-    },
-  
-    email: 'info@tradebone.com',
-    website: 'www.tradebone.com',
-  
-    image: '/CEO.png', // 👈 replace with your uploaded image path
-  
-    message: `
-    At Tradebone Group LLC, our mission is to lead innovation across multiple industrial sectors by delivering cutting-edge solutions in automation, manufacturing, and advanced engineering. 
-    From AI-powered robotics to battery technology and precision molding, we are committed to building sustainable, high-performance systems that empower global industries.
-    
-    With a strong international presence and a focus on quality, reliability, and long-term partnerships, we continue to expand our capabilities and redefine excellence in modern manufacturing.
-    `,
-  
-    services: [
-      'AI Powered Electric Flying Cars Aerospace Industry',
-      'AI Robot Police / Cleaning & Delivery Systems',
-      'Flavor, Seasoning & Food Processing Machinery',
-      'Mines & Minerals Processing Factory',
-      'Lithium & Sodium Battery Technology Transfer',
-      'Battery Recycling (Lead, Cobalt, Nickel, Lithium)'
-    ],
-  
-    offices: [
-      {
-        country: 'USA',
-        type: 'Head Office',
-        address: '510 Clint Ln, Fredericksburg, VA 22406, USA'
-      },
-      {
-        country: 'China',
-        type: 'Office',
-        address: 'Building F Office 604, Development Business Center, Park Road, Baoan District, Shenzhen'
-      },
-      {
-        country: 'Dubai',
-        type: 'UAE Office',
-        address: 'Al Qusais Industrial Area First, Dubai, UAE'
-      },
-      {
-        country: 'Saudi Arabia',
-        type: 'Office',
-        address: 'Postal Code 23846, District Office No. 8, Building 2292, Al Mulaihem Street, Aziziyah, Jeddah'
-      },
-      {
-        country: 'Afghanistan',
-        type: 'Office',
-        address: 'Shahr-e-Naw, Kabul, Afghanistan'
-      },
-      {
-        country: 'United Kingdom',
-        type: 'Office',
-        address: '61 Broomfield Road, 3809 Sheffield, United Kingdom'
-      },
-      {
-        country: 'Lahore',
-        type: 'Office',
-        address: '140-B Allama Iqbal Town Industrial Estate, Kot Lakhpat Lahore, Pakistan'
-      }
-    ]
+    name: 'Kevin Lee',
+    role: 'Chief Executive Officer',
+    email: 'Sales@shanghaimold.com',
+    message: `At Shanghai Mold, our unwavering commitment is to engineering excellence and precision manufacturing. We strive to lead the industry by delivering world-class mold solutions that empower businesses and redefine quality standards globally.
+
+    Our focus remains clear: bringing unparalleled expertise, reliability, and innovation to every project we undertake.`
   };
 
   timeline = [

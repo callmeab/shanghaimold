@@ -5,6 +5,7 @@ import { LoadingService } from '../../shared/services/loading.service';
 
 interface Service {
   icon: string;
+  image?: string;
   title: string;
   description: string;
   features: string[];
@@ -32,135 +33,122 @@ export class ServicesComponent implements OnInit, AfterViewInit, OnDestroy {
   // Services data from image
   services: Service[] = [
     {
-      icon: 'bi-airplane-engines',
-      title: 'AI Powered Electric Flying Cars Aerospace Industry',
-      description: 'Advanced aerospace solutions for next-generation electric flying vehicles with AI integration.',
+      icon: 'bi-bandaid',
+      image: 'assets/images/services/medical-mold.webp',
+      title: 'Medical Molds',
+      description: 'High-precision components for the medical and healthcare sectors, maintaining strict regulatory standards.',
       features: [
-        'Electric Propulsion Systems',
-        'AI Flight Control',
-        'Lightweight Materials',
-        'Safety Compliance'
-      ]
-    },
-    {
-      icon: 'bi-robot',
-      title: 'AI Robot Police / AI Robot Cleaning & Delivery Robot for Hotel Industry',
-      description: 'Intelligent robotic solutions for security, cleaning, and hospitality services.',
-      features: [
-        'Autonomous Navigation',
-        'Smart Surveillance',
-        'Automated Cleaning',
-        'Delivery Services'
-      ]
-    },
-    {
-      icon: 'bi-gear-wide-connected',
-      title: 'Flavor, Seasoning, Food Processing Machinery & Coding Machinery',
-      description: 'Complete food processing and packaging machinery solutions.',
-      features: [
-        'Seasoning Systems',
-        'Coding & Marking',
-        'Quality Control',
-        'Hygiene Standards'
-      ]
-    },
-    {
-      icon: 'bi-minecart-loaded',
-      title: 'Mines & Minerals Processing Factory',
-      description: 'Advanced mineral processing and extraction equipment and solutions.',
-      features: [
-        'Ore Processing',
-        'Extraction Technology',
-        'Quality Analysis',
-        'Environmental Compliance'
-      ]
-    },
-    {
-      icon: 'bi-battery-charging',
-      title: 'Lithium Sodium Battery Technology Transfer',
-      description: 'Complete battery technology transfer and manufacturing setup.',
-      features: [
-        'Technology Transfer',
-        'Manufacturing Setup',
-        'Quality Standards',
-        'Technical Support'
-      ]
-    },
-    {
-      icon: 'bi-recycle',
-      title: 'Lead-Acid, Cobalt, Nickel & Lithium Battery Recycling Factory',
-      description: 'Eco-friendly battery recycling solutions for sustainable manufacturing.',
-      features: [
-        'Battery Collection',
-        'Material Recovery',
-        'Environmental Safety',
-        'Compliance Standards'
-      ]
-    },
-    {
-      icon: 'bi-pencil-square',
-      title: 'Mold Design & Engineering',
-      description: 'Advanced CAD/CAM/CAE systems for optimized tool design and flow analysis.',
-      features: [
-        'DFM & Flow Analysis',
-        '3D Part & Tool Design',
-        'Rapid Prototyping (SLA/SLS)',
-        'Material Selection Guidance'
-      ]
-    },
-    {
-      icon: 'bi-stack',
-      title: 'Precision Injection Molding',
-      description: 'Operating over 100 high-speed electric and hydraulic machines ranging from 50 to 1,200 tons.',
-      features: [
-        'Multi-Cavity Tooling',
-        'Two-Shot & Overmolding',
-        'Insert Molding',
-        'Clean Room Molding (Class 8)'
-      ]
-    },
-    {
-      icon: 'bi-shield-check',
-      title: 'Quality & Validation',
-      description: 'Rigorous validation processes ensuring compliance with IATF 16949 and medical-grade standards.',
-      features: [
-        'CMM 3D Inspection',
-        'SPC Real-time Monitoring',
-        'First Article Inspection',
-        'IQ/OQ/PQ Validation'
-      ]
-    },
-    {
-      icon: 'bi-tools',
-      title: 'Tool Maintenance',
-      description: 'In-house tool room dedicated to preventative maintenance and rapid repair of high-precision molds.',
-      features: [
-        'Predictive Maintenance',
-        'Laser Welding Repair',
-        'Tool Life Extension',
-        'Spare Part Management'
+        'Test Tube Series',
+        'Syringes & Needles',
+        'Pipette Tips',
+        'Petri Dishes',
+        'Medical Device Housings',
+        'Blood Collection Tubes',
+        'Cavities: 128, 64, 32',
+        'Fully hot half valve gate',
+        'Capability for large-scale project management (up to 12 molds+)'
       ]
     },
     {
       icon: 'bi-box-seam',
-      title: 'Secondary Operations',
-      description: 'Value-added services providing fully finished components ready for final product integration.',
+      image: 'assets/images/services/packaging-mold.webp',
+      title: 'Packaging Molds',
+      description: 'Advanced mold solutions for high-volume packaging applications, ensuring efficiency and consistency.',
       features: [
-        'Ultrasonic Welding',
-        'Pad Printing & Silk Screen',
-        'Mechanical Assembly',
-        'Custom Packaging'
+        'FT Cap',
+        'Thin-wall Containers',
+        'Beverage Caps & Closures',
+        'Cosmetics Packaging',
+        'Food & Beverage Containers',
+        'Cavities: 24+24 stack mold',
+        'Full hot side gate',
+        'Industry-leading cycle time',
+        'Oval inserts made using profile grinding machines'
       ]
     },
     {
-      icon: 'bi-truck',
-      title: 'Global Logistics',
-      description: 'Regional manufacturing hubs and direct-to-destination shipping for medical and automotive OEMs.',
+      icon: 'bi-person-heart',
+      image: 'assets/images/services/personal-care-mold.webp',
+      title: 'Personal Care Molds',
+      description: 'Aesthetic and durable molds for personal care and grooming products.',
       features: [
-        'JIT (Just-In-Time) Delivery',
-        'KANBAN Inventory',
-        'VMI Systems',
-        'Export/Import Compliance'
+        'Electric Toothbrush Series',
+        'Razor Handles & Components',
+        'Shampoo & Body Wash Bottles',
+        'Lotion Pumps & Dispensers',
+        'Hair Dryer Components',
+        'Epilator Housings',
+        'Soap Dispensers',
+        'Comb & Brush Molds',
+        'Deodorant Casings'
+      ]
+    },
+    {
+      icon: 'bi-cpu',
+      image: 'assets/images/services/electronic-mold.webp',
+      title: 'Electronic Molds',
+      description: 'Precision engineering for consumer and professional electronic device enclosures.',
+      features: [
+        'Case & Cover (Smartphones/Tablets)',
+        'Connectors & Plugs',
+        'Enclosures for Routers',
+        'Keypads & Buttons',
+        'Smart Home Device Housings',
+        'Wearable Device Components',
+        'Earbud Cases',
+        'Power Bank Housings',
+        'Laptop & Keyboard Components'
+      ]
+    },
+    {
+      icon: 'bi-car-front',
+      image: 'assets/images/services/automotive-mold.webp',
+      title: 'Automotive Molds',
+      description: 'Heavy-duty & highly durable injection molds for the automotive industry.',
+      features: [
+        'Truck Fender',
+        'Car Bumpers',
+        'Dashboard Panels',
+        'Door Handles & Interior Trim',
+        'HVAC Components',
+        'Lighting & Headlamp Housings',
+        'Front Grilles',
+        'Side Mirror Housings',
+        'Engine Bay Components'
+      ]
+    },
+    {
+      icon: 'bi-house-heart',
+      image: 'assets/images/services/home-appliance-mold.webp',
+      title: 'Home Appliance Molds',
+      description: 'Reliable mold designs for both structural and cosmetic appliance parts.',
+      features: [
+        'Refrigerator Drawer',
+        'Washing Machine Control Panels',
+        'Air Conditioner Fascias',
+        'Microwave Oven Doors',
+        'Blender & Mixer Housings',
+        'Vacuum Cleaner Components',
+        'Coffee Maker Parts',
+        'Fan Blades & Housings',
+        'Rice Cooker Casings'
+      ]
+    },
+    {
+      icon: 'bi-nut',
+      image: 'assets/images/services/special-mold.webp',
+      title: 'Special Molds',
+      description: 'Custom-engineered, highly technical molding solutions for demanding applications.',
+      features: [
+        'Multi-component (2K/3K) Molds',
+        'Insert & Overmolding',
+        'Gas-assisted Injection Molds',
+        'High-temperature Molds (PEEK/PEI)',
+        'Liquid Silicone Rubber (LSR)',
+        'Micro-molding',
+        'Stack Molds',
+        'Tandem Molds',
+        'Thin-wall Injection Molds'
       ]
     }
   ];
