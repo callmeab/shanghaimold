@@ -1,0 +1,150 @@
+// 1. Import Tailwind
+@import 'tailwindcss';
+
+// Swiper CSS
+@import 'swiper/css';
+@import 'swiper/css/navigation';
+@import 'swiper/css/pagination';
+@import 'swiper/css/effect-fade';
+
+@theme {
+  --color-primary: #1E40AF;
+  --color-secondary: #374151;
+  --color-accent: #F59E0B;
+  --color-bg-dark: #0F172A;
+}
+
+:root {
+  --primary: #1E40AF;
+  --secondary: #374151;
+  --accent: #F59E0B;
+  --bg-dark: #0F172A;
+  --text-light: #F3F4F6;
+  --text-muted: #9CA3AF;
+}
+
+// Global Overrides
+@layer base {
+  // 2. Smooth Scroll Behavior
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  // 3. Custom Scrollbar Styling
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #0f172a; // $primary dark
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #f59e0b; // $accent gold
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #d97706; // Darker gold
+  }
+
+  // Hide scrollbar when inactive visually if possible (standard behavior)
+  * {
+    scrollbar-color: #f59e0b #0f172a;
+    scrollbar-width: thin;
+  }
+}
+
+// 4. Global Transitions
+@layer utilities {
+  .transition-all-smooth {
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .transition-transform-smooth {
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  // 5. Utility classes for animations
+  .fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+
+  .slide-left {
+    animation: slideLeft 0.6s ease-out forwards;
+  }
+
+  .slide-right {
+    animation: slideRight 0.6s ease-out forwards;
+  }
+}
+
+// Keyframes definitions for all animations
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideRight {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.image-loading {
+  opacity: 0.3;
+  filter: blur(5px);
+  transition: all 0.3s ease;
+}
+
+.image-loaded {
+  opacity: 1;
+  filter: blur(0);
+}
+
+.image-error {
+  opacity: 0.5;
+  background: linear-gradient(135deg, #1E40AF, #0F172A);
+}

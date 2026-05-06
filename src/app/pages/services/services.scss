@@ -1,0 +1,193 @@
+$primary:      #1E40AF;
+$bg-dark:       #0F172A;
+$secondary:    #374151;
+$accent:       #F59E0B;
+$text:         #F3F4F6;
+$text-muted:   #9CA3AF;
+$white:        #ffffff;
+$glass-bg:     rgba(255, 255, 255, 0.04);
+$glass-border: rgba(255, 255, 255, 0.09);
+
+:host {
+  display: block;
+  background: $bg-dark;
+  color: $text;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+// HERO
+.services-hero {
+  position: relative;
+  padding: 10rem 2rem 6rem;
+  text-align: center;
+  background: linear-gradient(135deg, #1E40AF 0%, #0F172A 100%);
+
+  &__bg-grid {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 50px 50px;
+    mask-image: radial-gradient(ellipse at center, black, transparent 80%);
+    pointer-events: none;
+  }
+
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1.25rem;
+    background: $glass-bg;
+    border: 1px solid $glass-border;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: $accent;
+    margin-bottom: 2rem;
+    backdrop-filter: blur(10px);
+  }
+
+  &__title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    color: $white;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+
+    span {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  }
+
+  &__subtitle {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.125rem;
+    color: $text-muted;
+    line-height: 1.6;
+  }
+}
+
+// SERVICE CARDS
+.service-detail-card {
+  background: $secondary;
+  border: 1px solid $glass-border;
+  padding: 2.5rem;
+  border-radius: 24px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 4px;
+    background: linear-gradient(90deg, transparent, $accent, transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  &:hover {
+    transform: translateY(-10px);
+    border-color: $accent;
+    box-shadow: 0 0 20px rgba(245,158,11,0.2);
+
+    &::before { opacity: 1; }
+    .service-detail-card__icon-box { transform: scale(1.1) rotate(5deg); background: rgba($accent, 0.1); color: $accent; }
+  }
+
+  &__icon-box {
+    width: 60px;
+    height: 60px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+    color: $white;
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+  }
+
+  &__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: $white;
+    margin-bottom: 1rem;
+  }
+
+  &__text {
+    color: $text-muted;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.875rem;
+      color: $text;
+      
+      i { color: $accent; font-size: 1rem; }
+    }
+  }
+}
+
+// PROCESS STEPS
+.process-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2rem;
+  position: relative;
+
+  @media (max-width: 1024px) { grid-template-columns: 1fr; }
+}
+
+.process-step {
+  text-align: center;
+  position: relative;
+
+  &__number {
+    font-size: 4rem;
+    font-weight: 900;
+    color: rgba(255,255,255,0.03);
+    line-height: 1;
+    margin-bottom: -2rem;
+    transition: color 0.3s;
+  }
+
+  &__title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: $white;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__text {
+    font-size: 0.9rem;
+    color: $text-muted;
+    line-height: 1.5;
+  }
+
+  &:hover {
+    .process-step__number { color: rgba($accent, 0.1); }
+  }
+}
+

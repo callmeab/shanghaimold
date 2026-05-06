@@ -1,0 +1,30 @@
+@reference "tailwindcss";
+
+.stat-card {
+  @apply relative;
+}
+
+
+/* Swiper Styles */
+:host ::ng-deep {
+  .swiper-pagination-bullet {
+    @apply w-3 h-3 bg-white/50 opacity-100 transition-all duration-300;
+    
+    &-active {
+      @apply w-10 bg-amber-500 rounded-full;
+    }
+  }
+
+  .swiper-slide-fade {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+.testimonials-container {
+  @apply relative;
+}
+
+.cta-section {
+  @apply relative;
+}
+

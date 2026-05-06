@@ -1,0 +1,137 @@
+// Design Tokens
+$primary:      #1E40AF;
+$bg-dark:       #0F172A;
+$accent:       #F59E0B;
+$accent2: #3b82f6;
+$white: #ffffff;
+$text-muted:   #9CA3AF;
+
+.loading-wrapper {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: $bg-dark;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              visibility 0.8s;
+  
+  &.fade-out {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.loading-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 300px;
+  width: 100%;
+}
+
+// Logo Animation
+.logo-container {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-shape {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  
+  &.primary {
+    background: $accent2;
+    top: 10px;
+    left: 10px;
+    animation: rotateSquare 3s ease-in-out infinite alternate;
+  }
+  
+  &.secondary {
+    background: $accent;
+    bottom: 10px;
+    right: 10px;
+    border-radius: 50%;
+    animation: bounceCircle 1.5s ease-in-out infinite alternate;
+    mix-blend-mode: screen;
+  }
+}
+
+.logo-text {
+  position: absolute;
+  bottom: -40px;
+  font-family: 'Inter', 'Outfit', sans-serif;
+  font-weight: 800;
+  font-size: 1.4rem;
+  color: $white;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  animation: pulseText 2s ease-in-out infinite alternate;
+}
+
+// Progress Bar
+.progress-container {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, $accent2, $accent);
+  border-radius: 4px;
+  width: 0%;
+  animation: loadProgress 2s cubic-bezier(0.8, 0, 0.2, 1) forwards;
+}
+
+.loading-text {
+  font-family: 'Inter', 'Outfit', sans-serif;
+  font-size: 0.75rem;
+  color: $text-muted;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  animation: fadeText 1.5s infinite alternate;
+}
+
+// Keyframes
+@keyframes rotateSquare {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(90deg) scale(1.2); border-radius: 50%; background: $accent; }
+  100% { transform: rotate(180deg) scale(1); }
+}
+
+@keyframes bounceCircle {
+  0% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(-30px) scale(0.8); background: $accent2; border-radius: 8px; }
+}
+
+@keyframes pulseText {
+  0% { opacity: 0.7; transform: translateY(0); }
+  100% { opacity: 1; transform: translateY(-5px); }
+}
+
+@keyframes loadProgress {
+  0% { width: 0%; }
+  30% { width: 15%; }
+  50% { width: 60%; }
+  80% { width: 85%; }
+  100% { width: 100%; }
+}
+
+@keyframes fadeText {
+  0% { opacity: 0.4; }
+  100% { opacity: 1; }
+}
+

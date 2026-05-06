@@ -1,0 +1,166 @@
+<!-- ══════════════════════════════════════════
+     HERO
+══════════════════════════════════════════ -->
+<section class="portfolio-hero">
+  <div class="portfolio-hero__bg-grid"></div>
+  <div class="portfolio-hero__content">
+    <div class="portfolio-hero__badge" data-aos="fade-down" data-aos-duration="600">
+      <i class="bi bi-layers"></i>
+      Our Work
+    </div>
+    <h1 class="portfolio-hero__title" data-aos="fade-up" data-aos-duration="700" data-aos-delay="100">
+      Built with <span>Purpose</span>,<br>Crafted with Precision
+    </h1>
+    <p class="portfolio-hero__subtitle" data-aos="fade-up" data-aos-duration="700" data-aos-delay="200">
+      A curated selection of products, platforms and experiences we've shaped from concept to delivery.
+    </p>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     FILTER + GRID
+══════════════════════════════════════════ -->
+<section class="portfolio-section">
+
+  <!-- Filter Buttons -->
+  <div class="filter-bar" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">
+    @for (cat of categories; track cat) {
+      <button
+        class="filter-btn"
+        [class.filter-btn--active]="activeFilter() === cat"
+        (click)="setFilter(cat)"
+        [attr.aria-pressed]="activeFilter() === cat"
+        [id]="'filter-' + cat.toLowerCase()">
+        <span [innerHTML]="getCategoryIcon(cat)"></span>
+        {{ cat }}
+      </button>
+    }
+  </div>
+
+  <!-- Results count -->
+  <p class="results-info">
+    Showing <span>{{ filteredProjects().length }}</span> of {{ allProjects.length }} projects
+  </p>
+
+  <!-- Masonry Grid -->
+  <div class="projects-grid" [class.is-filtering]="isFiltering()">
+    @for (project of filteredProjects(); track project.id; let i = $index) {
+      <div
+        class="project-card border-t-[3px] border-t-transparent transition-all duration-300"
+        [ngClass]="getBorderColor(project.category)"
+        (click)="openModal(project)"
+        [id]="'project-card-' + project.id"
+        role="button"
+        tabindex="0"
+        [attr.aria-label]="'View details for ' + project.title"
+        (keydown.enter)="openModal(project)">
+
+        <!-- Image -->
+        <div class="project-card__img-wrap relative">
+          <img
+            [appImageLoader]="project.image"
+            [fallbackImage]="'/building-bg.png'"
+            [alt]="project.title"
+            class="project-card__img"
+            loading="lazy" />
+
+          <!-- Badge -->
+          <span class="project-card__category-badge absolute top-3 right-3">{{ project.category }}</span>
+
+          <!-- Client Logo/Initial -->
+          <div class="absolute top-3 left-3 w-8 h-8 rounded-full bg-[#0F172A]/80 backdrop-blur-md flex items-center justify-center text-white font-bold text-sm border border-white/10 shadow-lg z-[2]">
+            {{ project.client.charAt(0) }}
+          </div>
+
+          <!-- Hover overlay with tech tags + CTA -->
+          <div class="project-card__overlay flex flex-col justify-end p-6">
+            <p class="project-card__overlay-title text-white font-bold text-lg mb-2">{{ project.client }}</p>
+          </div>
+
+          <!-- CTA button in center on hover -->
+          <button class="project-card__cta" tabindex="-1">
+            <i class="bi bi-eye"></i> View Project
+          </button>
+        </div>
+
+        <!-- Card footer -->
+        <div class="project-card__info p-5 flex justify-between items-start gap-4 bg-slate-800/50">
+          <div>
+            <div class="flex items-center gap-2 mb-2 text-amber-500">
+              <span [innerHTML]="getCategoryIcon(project.category)"></span>
+              <p class="project-card__year font-bold text-xs uppercase">{{ project.year }}</p>
+            </div>
+            <p class="project-card__title text-white font-bold text-[15px] leading-snug">{{ project.title }}</p>
+          </div>
+        </div>
+      </div>
+    }
+
+    @if (filteredProjects().length === 0) {
+      <div class="empty-state">
+        <i class="bi bi-folder2-open"></i>
+        <p>No projects found in this category.</p>
+      </div>
+    }
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     PROJECT DETAIL MODAL
+══════════════════════════════════════════ -->
+@if (isModalOpen() && selectedProject()) {
+  <div
+    class="modal-backdrop"
+    [class.modal-open]="isModalOpen()"
+    (click)="closeModal()"
+    role="dialog"
+    aria-modal="true"
+    [attr.aria-label]="selectedProject()!.title + ' project details'"
+    id="project-modal">
+
+    <div class="modal-panel" (click)="stopPropagation($event)">
+
+      <!-- Close button -->
+      <button class="modal-panel__close" (click)="closeModal()" aria-label="Close modal" id="modal-close-btn">
+        <i class="bi bi-x-lg"></i>
+      </button>
+
+      <!-- Header image -->
+      <div class="modal-panel__img-wrap">
+        <img
+          [appImageLoader]="selectedProject()!.image"
+          [fallbackImage]="'/building-bg.png'"
+          [alt]="selectedProject()!.title"
+          class="modal-panel__img"
+          loading="lazy" />
+        <div class="modal-panel__img-overlay"></div>
+      </div>
+
+      <!-- Body -->
+      <div class="modal-panel__body">
+        <div class="modal-panel__meta">
+          <span class="modal-panel__category">{{ selectedProject()!.category }}</span>
+          <span class="modal-panel__year">{{ selectedProject()!.year }}</span>
+        </div>
+
+        <h2 class="modal-panel__title">{{ selectedProject()!.title }}</h2>
+
+        <p class="modal-panel__description">{{ selectedProject()!.description }}</p>
+
+        <p class="modal-panel__tech-label mb-2 border-t border-slate-700/50 pt-4">Client Detail</p>
+        <div class="modal-panel__tech-list">
+            <span class="modal-panel__tech-badge">{{ selectedProject()!.client }}</span>
+        </div>
+
+        <div class="modal-panel__actions">
+          <button class="modal-panel__btn modal-panel__btn--secondary mt-4 w-full justify-center" (click)="closeModal()">
+            <i class="bi bi-x-circle"></i> Close Window
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+}
+

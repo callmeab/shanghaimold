@@ -1,0 +1,53 @@
+<section class="hero-container relative h-screen w-full flex items-center justify-center overflow-hidden">
+  
+  <!-- Background Layer (Parallax ready) -->
+  <div class="absolute inset-0 z-0 overflow-hidden">
+    @if (backgroundImage) {
+      <img
+        [appImageLoader]="backgroundImage"
+        [fallbackImage]="'/building-bg.png'"
+        alt="Hero Background"
+        class="hero-bg w-full h-full object-cover object-center"
+        loading="lazy">
+    } @else {
+      <!-- Industrial Theme Gradient -->
+      <div class="hero-bg w-full h-full bg-gradient-to-br from-[#0F172A] to-[#1E40AF]"></div>
+    }
+    
+    <!-- Top to Bottom Gradient Overlay -->
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-[#0F172A]/80 z-[1]"></div>
+    <!-- Flat semi-transparent Overlay -->
+    <div class="absolute inset-0 bg-black/50 z-[2]"></div>
+  </div>
+
+  <!-- Content Layer -->
+  <div class="relative z-10 text-center px-6 max-w-5xl mx-auto">
+    <h1 class="hero-title text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight tracking-tight drop-shadow-2xl">
+      {{ title }}
+    </h1>
+    
+    <div class="flex justify-center">
+      <p class="hero-subtitle typing-effect text-lg md:text-2xl text-white/90 mb-10 font-medium drop-shadow-md">
+        {{ subtitle }}
+      </p>
+    </div>
+
+    <!-- CTA Buttons -->
+    <div class="hero-buttons flex flex-wrap justify-center gap-4">
+      @for (btn of ctaButtons; track btn.link; let i = $index) {
+        <a [routerLink]="btn.link" class="cta-btn px-8 py-4 rounded-full font-bold text-lg transition-all duration-300">
+          {{ btn.text }}
+        </a>
+      }
+    </div>
+  </div>
+
+  <!-- Scroll Down Indicator -->
+  <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 cursor-pointer pulse-scroll" (click)="scrollToNext()">
+    <span class="text-white text-xs uppercase tracking-widest font-bold opacity-80">Explore</span>
+    <div class="scroll-indicator w-6 h-10 border-2 border-white/50 rounded-full flex justify-center p-1">
+      <div class="w-1.5 h-1.5 bg-white rounded-full animate-bounce"></div>
+    </div>
+  </div>
+</section>
+

@@ -1,0 +1,174 @@
+<!-- ════════════════════════════════════════════════
+     1. HERO BANNER — scale + fade on page load
+     ════════════════════════════════════════════════ -->
+<section class="about-hero">
+  <!-- Background elements -->
+  <div class="about-hero__bg-grid"></div>
+  <div class="about-hero__orb about-hero__orb--1"></div>
+  <div class="about-hero__orb about-hero__orb--2"></div>
+
+  <div class="about-hero__content">
+    <div class="about-hero__badge">
+      <i class="bi bi-buildings"></i>
+      Who We Are
+    </div>
+
+    <h1 class="about-hero__title">
+      <span class="highlight">{{ heroTitle.split(' ').slice(0, 2).join(' ') }}</span><br>
+      {{ heroTitle.split(' ').slice(2).join(' ') }}
+    </h1>
+
+    <p class="about-hero__subtitle">{{ heroSubtitle }}</p>
+  </div>
+
+  <div class="about-hero__scroll-indicator">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     2. MISSION / VISION CARDS
+     Mission: AOS fade-right | Vision: AOS fade-left
+     ════════════════════════════════════════════════ -->
+<section class="mission-vision">
+  <div class="mission-vision__wrapper">
+    <div class="mission-vision__header" data-aos="fade-up">
+      <p class="section-label">Our DNA</p>
+      <h2 class="section-title">Built on Purpose</h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="mission-vision__grid">
+      <!-- Mission: slide from left -->
+      <div class="mv-card mv-card--mission"
+           data-aos="fade-right"
+           data-aos-duration="900"
+           data-aos-delay="100">
+        <div class="mv-card__icon-wrap">
+          <i class="bi bi-bullseye"></i>
+        </div>
+        <h3 class="mv-card__title">{{ mission.title }}</h3>
+        <p class="mv-card__content">{{ mission.content }}</p>
+        <div class="mv-card__glow"></div>
+      </div>
+
+      <!-- Vision: slide from right -->
+      <div class="mv-card mv-card--vision"
+           data-aos="fade-left"
+           data-aos-duration="900"
+           data-aos-delay="200">
+        <div class="mv-card__icon-wrap">
+          <i class="bi bi-eye"></i>
+        </div>
+        <h3 class="mv-card__title">{{ vision.title }}</h3>
+        <p class="mv-card__content">{{ vision.content }}</p>
+        <div class="mv-card__glow"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     3. TEAM GRID — zoom-in on scroll + hover scale
+     ════════════════════════════════════════════════ -->
+<section class="team-section">
+  <div class="team-section__wrapper">
+    <div class="team-section__header" data-aos="fade-up">
+      <p class="section-label">The People</p>
+      <h2 class="section-title">Meet Our Team</h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="team-section__grid">
+      @for (member of teamMembers; track member.name; let i = $index) {
+        <div class="team-card"
+             data-aos="zoom-in"
+             [attr.data-aos-delay]="i * 100"
+             data-aos-duration="700">
+          <div class="team-card__img-wrap">
+            <img
+              [appImageLoader]="member.image"
+              [fallbackImage]="'/building-bg.png'"
+              [alt]="member.name"
+              class="team-card__img"
+              loading="lazy" />
+            <div class="team-card__overlay"></div>
+            <div class="team-card__social">
+              <a href="#" aria-label="LinkedIn profile"><i class="bi bi-linkedin"></i></a>
+              <a href="#" aria-label="Email"><i class="bi bi-envelope"></i></a>
+            </div>
+          </div>
+          <div class="team-card__info">
+            <p class="team-card__name">{{ member.name }}</p>
+            <p class="team-card__role">{{ member.role }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     4. TIMELINE — vertical line + staggered slide-left
+     ════════════════════════════════════════════════ -->
+<section class="timeline-section">
+  <div class="timeline-section__wrapper">
+    <div class="timeline-section__header" data-aos="fade-up">
+      <p class="section-label">Our Journey</p>
+      <h2 class="section-title">Milestones That Shaped Us</h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="timeline-section__track">
+      @for (item of timeline; track item.year; let i = $index) {
+        <div class="timeline-item"
+             data-aos="fade-right"
+             [attr.data-aos-delay]="i * 150"
+             data-aos-duration="800">
+          <div class="timeline-item__dot"></div>
+          <div class="timeline-item__card">
+            <span class="timeline-item__year">{{ item.year }}</span>
+            <h3 class="timeline-item__title">{{ item.title }}</h3>
+            <p class="timeline-item__description">{{ item.description }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     5. VALUES — flip-up stagger + icon 360° rotation
+     ════════════════════════════════════════════════ -->
+<section class="values-section">
+  <div class="values-section__wrapper">
+    <div class="values-section__header" data-aos="fade-up">
+      <p class="section-label">What Drives Us</p>
+      <h2 class="section-title">Our Core Values</h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="values-section__grid">
+      @for (value of values; track value.title; let i = $index) {
+        <div class="value-card"
+             data-aos="flip-up"
+             [attr.data-aos-delay]="i * 120"
+             data-aos-duration="800"
+             (mouseenter)="onValueHover($event)">
+          <div class="value-card__icon" [id]="'value-icon-' + i">
+            <i class="bi {{ value.icon }}"></i>
+          </div>
+          <h3 class="value-card__title">{{ value.title }}</h3>
+          <p class="value-card__description">{{ value.description }}</p>
+          <div class="value-card__bg-shape"></div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+

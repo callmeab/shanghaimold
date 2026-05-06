@@ -1,0 +1,99 @@
+<nav
+  [class.scrolled]="isScrolled"
+  class="navbar fixed top-0 w-full z-50 transition-all duration-300 px-6 py-4 lg:px-16"
+>
+  <div class="max-w-7xl mx-auto flex justify-between items-center">
+    <!-- Logo -->
+    <div
+      class="logo cursor-pointer group"
+      routerLink="/"
+    >
+      <span class="logo-text font-bold transition-all duration-300" 
+            [ngClass]="[
+              isScrolled ? 'text-3xl text-slate-900' : 'text-[40px] leading-[40px] text-white'
+            ]">
+        Shanghai<span class="text-amber-500">Mold</span>
+      </span>
+    </div>
+
+    <!-- Desktop Menu + CTA -->
+    <div class="hidden md:flex items-center space-x-10">
+      <div class="flex space-x-8">
+        @for (item of menuItems; track item.path) {
+          <a
+            [routerLink]="item.path"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: item.path === '/' }"
+            class="menu-item font-medium hover:text-amber-500 transition-colors py-1"
+            [ngClass]="isScrolled ? 'text-slate-700' : 'text-white'"
+          >
+            {{ item.label }}
+          </a>
+        }
+      </div>
+
+      <!-- Request Quote Button -->
+      <a routerLink="/contact" class="quote-btn bg-amber-500 text-white font-bold py-2.5 px-6 rounded-full transition-all duration-300 uppercase text-sm tracking-wider hover:bg-amber-600">
+        Request Quote
+      </a>
+    </div>
+
+    <!-- Hamburger Menu -->
+    <button
+      class="md:hidden z-50 focus:outline-none group p-2"
+      (click)="toggleMenu()"
+    >
+      <div class="flex flex-col space-y-1.5">
+        <span
+          class="w-8 h-0.5 hamburger-span transition-all duration-300"
+          [class.rotate-45]="isMenuOpen"
+          [class.translate-y-2]="isMenuOpen"
+          [ngClass]="isScrolled || isMenuOpen ? 'bg-slate-900' : 'bg-white'"
+        ></span>
+        <span
+          class="w-8 h-0.5 hamburger-span transition-all duration-300"
+          [class.opacity-0]="isMenuOpen"
+          [ngClass]="isScrolled || isMenuOpen ? 'bg-slate-900' : 'bg-white'"
+        ></span>
+        <span
+          class="w-8 h-0.5 hamburger-span transition-all duration-300"
+          [class.-rotate-45]="isMenuOpen"
+          [class.-translate-y-2]="isMenuOpen"
+          [ngClass]="isScrolled || isMenuOpen ? 'bg-slate-900' : 'bg-white'"
+        ></span>
+      </div>
+    </button>
+  </div>
+
+  <!-- Mobile Menu Overlay -->
+  @if (isMenuOpen) {
+    <div
+      class="mobile-menu fixed inset-0 bg-white z-40 flex flex-col pt-32 px-10 md:hidden shadow-2xl"
+    >
+      <!-- Links -->
+      <div class="flex flex-col space-y-8 flex-1">
+        @for (item of menuItems; track item.path) {
+          <a
+            [routerLink]="item.path"
+            (click)="toggleMenu()"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: item.path === '/' }"
+            class="mobile-menu-item text-4xl font-bold text-slate-900 hover:text-amber-500 transition-colors"
+          >
+            {{ item.label }}
+          </a>
+        }
+        
+        <!-- Mobile Quote Button -->
+        <a routerLink="/contact" (click)="toggleMenu()" class="mobile-menu-item mt-4 inline-block text-center bg-amber-500 text-white font-bold py-4 px-8 rounded-full shadow-lg">
+          Request Quote
+        </a>
+      </div>
+
+      <!-- Tagline -->
+      <div class="pb-10 mobile-menu-item opacity-70 border-t border-slate-100 pt-8">
+        <span class="text-slate-500 text-sm uppercase tracking-widest font-semibold">40+ Years of Excellence</span>
+      </div>
+    </div>
+  }
+</nav>

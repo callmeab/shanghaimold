@@ -1,0 +1,78 @@
+@reference "tailwindcss";
+
+.hero-container {
+  /* removed problematic selection class */
+}
+
+.cta-btn {
+  // Primary (Odd) - Orange #F59E0B (amber-500)
+  @apply bg-amber-500 text-white border-2 border-amber-500 hover:bg-amber-600 hover:border-amber-600 transition-colors shadow-xl active:scale-95;
+
+  // Secondary (Even) - Outline white
+  &:nth-child(even) {
+    @apply bg-transparent text-white border-2 border-white hover:bg-white hover:text-[#0F172A] backdrop-blur-sm;
+  }
+}
+
+.pulse-scroll {
+  animation: pulseIndicator 2s infinite;
+}
+
+@keyframes pulseIndicator {
+  0% { transform: translateX(-50%) scale(1); opacity: 0.8; }
+  50% { transform: translateX(-50%) scale(1.05); opacity: 1; filter: drop-shadow(0 0 10px rgba(255,255,255,0.5)); }
+  100% { transform: translateX(-50%) scale(1); opacity: 0.8; }
+}
+
+.scroll-indicator {
+  transition: transform 0.3s ease;
+  
+  &:hover {
+    transform: translateY(10px);
+    @apply border-amber-500;
+    
+    div {
+      @apply bg-amber-500;
+    }
+  }
+}
+
+.hero-title {
+  text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.hero-bg {
+  transform-origin: center top;
+}
+
+// Typing Effect for Subheading
+.typing-effect {
+  display: inline-block;
+  overflow: hidden; 
+  white-space: nowrap; 
+  margin: 0 auto;
+  border-right: 0.15em solid rgba(245, 158, 11, 0.7);
+  animation: typing 3s steps(60, end) 1s forwards, 
+             blink-caret 0.75s step-end infinite;
+  max-width: 0;
+}
+
+@keyframes typing {
+  from { max-width: 0; }
+  to { max-width: 100%; }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: rgba(245, 158, 11, 0.7); }
+}
+
+@media (max-width: 768px) {
+  .typing-effect {
+    white-space: normal;
+    border-right: none;
+    animation: none;
+    max-width: 100%;
+  }
+}
+

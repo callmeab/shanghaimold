@@ -1,0 +1,95 @@
+<footer class="footer">
+  <div class="footer__container">
+    <div class="footer__grid">
+      <!-- Column 1: Company Info -->
+      <div class="footer__col" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+      <img src="/main-logo.png" class="w-40" alt="">
+        <p class="footer__tagline text-amber-500 font-bold text-sm mb-2 uppercase tracking-widest">Engineering Excellence Since 1983</p>
+        <p class="footer__text">
+          Leading provider of injection molding solutions with global manufacturing presence and ISO certified quality standards.
+        </p>
+        <div class="footer__socials">
+          <a href="#" class="social-icon" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+          <a href="#" class="social-icon" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="social-icon" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+        </div>
+      </div>
+
+      <!-- Column 2: Quick Links -->
+      <div class="footer__col" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+        <h3 class="footer__title">Quick Links</h3>
+        <ul class="footer__links">
+          <li><a routerLink="/" class="hover-underline">Home</a></li>
+          <li><a routerLink="/services" class="hover-underline">Services</a></li>
+          <li class="pl-4 text-sm opacity-80"><a routerLink="/services" class="hover-underline">Mold Design</a></li>
+          <li class="pl-4 text-sm opacity-80"><a routerLink="/services" class="hover-underline">Manufacturing</a></li>
+          <li class="pl-4 text-sm opacity-80"><a routerLink="/services" class="hover-underline">Quality Control</a></li>
+          <li><a routerLink="/portfolio" class="hover-underline">Portfolio</a></li>
+          <li><a routerLink="/about" class="hover-underline">About Us</a></li>
+          <li><a routerLink="/contact" class="hover-underline">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Industries -->
+      <div class="footer__col" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
+        <h3 class="footer__title">Industries</h3>
+        <ul class="footer__links">
+          <li><a href="#" class="hover-underline">Automotive</a></li>
+          <li><a href="#" class="hover-underline">Medical Devices</a></li>
+          <li><a href="#" class="hover-underline">Consumer Electronics</a></li>
+          <li><a href="#" class="hover-underline">Personal Care</a></li>
+          <li><a href="#" class="hover-underline">Packaging</a></li>
+          <li><a href="#" class="hover-underline">Smart Home</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 4: Contact -->
+      <div class="footer__col" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
+        <h3 class="footer__title">Contact Us</h3>
+        <div class="footer__contact-info space-y-4">
+          <div class="flex items-start gap-3">
+            <i class="bi bi-geo-alt-fill text-amber-500 mt-1"></i>
+            <p class="footer__text mb-0">123 Industrial Park, Manufacturing Zone</p>
+          </div>
+          <div class="flex items-center gap-3">
+            <i class="bi bi-telephone-fill text-amber-500"></i>
+            <p class="footer__text mb-0">+92 (XXX) XXX-XXXX</p>
+          </div>
+          <div class="flex items-center gap-3">
+            <i class="bi bi-envelope-fill text-amber-500"></i>
+            <p class="footer__text mb-0">info@shanghaimold.com</p>
+          </div>
+          <div class="flex items-center gap-3">
+            <i class="bi bi-clock-fill text-amber-500"></i>
+            <p class="footer__text mb-0">Mon-Fri: 8:00 AM - 6:00 PM</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer__bottom">
+    <div class="footer__container py-6 flex flex-col md:flex-row justify-between items-center gap-4">
+      <p class="copyright mb-0">© 2026 Shanghai Mold. All Rights Reserved</p>
+      <div class="certifications text-slate-400 text-xs font-bold tracking-widest">
+        ISO 9001 | ISO 14001 | IATF 16949
+      </div>
+      <div class="footer__bottom-links text-xs space-x-4">
+        <a href="#" class="hover:text-amber-500 transition-colors">Privacy Policy</a>
+        <span class="text-slate-700">|</span>
+        <a href="#" class="hover:text-amber-500 transition-colors">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Back to Top Button -->
+  <button
+    class="back-to-top"
+    [class.show]="showBackToTop"
+    (click)="scrollToTop()"
+    aria-label="Back to top"
+  >
+    <i class="bi bi-arrow-up-short"></i>
+  </button>
+</footer>
+

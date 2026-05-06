@@ -1,0 +1,92 @@
+@reference "tailwindcss";
+
+.navbar {
+  @apply bg-transparent transition-all duration-300;
+
+  &.scrolled {
+    background-color: white;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    @apply shadow-lg py-3 lg:py-4;
+
+    .logo-text {
+      @apply text-slate-900;
+    }
+
+    .menu-item {
+      @apply text-slate-700;
+      
+      &:hover, &.active {
+        @apply text-amber-600;
+      }
+
+      &.active::after {
+        @apply bg-amber-600;
+      }
+    }
+
+    .hamburger-span {
+      @apply bg-slate-900;
+    }
+    
+    .quote-btn {
+      @apply shadow-md;
+    }
+  }
+}
+
+.logo-text {
+  @apply transition-all duration-300;
+}
+
+.logo {
+  @apply select-none inline-block;
+  
+  &:hover {
+    transform: scale(1.05);
+    transform-origin: left center;
+  }
+}
+
+.mobile-menu {
+  @apply h-screen w-full;
+}
+
+.menu-item {
+  position: relative;
+  @apply transition-colors duration-300;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    @apply bg-amber-500 transition-all duration-300 ease-in-out;
+  }
+
+  &:hover::after,
+  &.active::after {
+    width: 100%;
+  }
+
+  &.active {
+    @apply text-amber-500 font-bold;
+  }
+}
+
+.hamburger-span {
+  @apply transition-all duration-300;
+}
+
+.quote-btn {
+  position: relative;
+  @apply transition-all duration-300;
+  
+  &:hover {
+    background-color: #d97706; // amber-600
+    box-shadow: 0 0 20px rgba(245, 158, 11, 0.5);
+    transform: translateY(-1px);
+  }
+}

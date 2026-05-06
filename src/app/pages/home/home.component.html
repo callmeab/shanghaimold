@@ -1,0 +1,223 @@
+<!-- 1. Hero Section -->
+<app-hero-section
+  [title]="heroTitle"
+  [subtitle]="heroSubtitle"
+  [backgroundImage]="heroImage"
+  [ctaButtons]="heroButtons"
+></app-hero-section>
+
+<!-- 2. About Preview -->
+<section class="about-preview py-24 md:py-32 px-6 bg-[#0F172A] overflow-hidden">
+  <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+    <div class="about-text text-white">
+      <h2 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+        Leading Manufacturing <br> <span class="text-amber-500">Solutions Provider</span>
+      </h2>
+      <p class="text-lg text-slate-300 mb-8 leading-relaxed">
+        With over 40 years of specialized injection molding experience, we possess a robust global presence encompassing 4 distinct state-of-the-art manufacturing facilities. We proudly serve the top-tier automotive, highly-regulated medical, and competitive electronics industries under rigorous ISO certified quality parameters.
+      </p>
+      <button routerLink="/about" class="px-8 py-3 border-2 border-white text-white font-bold hover:bg-white hover:text-[#0F172A] transition-all duration-300 rounded-lg outline-none">
+        Learn More
+      </button>
+    </div>
+    <div class="about-image relative h-full min-h-[500px]">
+      <img
+        [appImageLoader]="'https://images.unsplash.com/photo-1565439390236-c0d165f12bd2?auto=format&fit=crop&q=80&w=1200'"
+        [fallbackImage]="'/building-bg.png'"
+        alt="Industrial Manufacturing Machinery"
+        class="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-2xl brightness-75"
+        loading="lazy">
+      <div class="absolute inset-x-0 bottom-0 p-6 z-10 grid grid-cols-2 gap-4">
+        
+        <div class="stat-overlay bg-[#0F172A]/85 backdrop-blur-sm border-l-4 border-amber-500 p-5 rounded-r-lg shadow-xl opacity-0">
+          <div class="text-3xl font-extrabold text-white flex items-center">
+            <span class="count-overlay" data-target="40">0</span><span class="text-amber-500 ml-1">+</span>
+          </div>
+          <div class="text-xs text-slate-300 font-bold uppercase tracking-widest mt-1">Years Experience</div>
+        </div>
+
+        <div class="stat-overlay bg-[#0F172A]/85 backdrop-blur-sm border-l-4 border-amber-500 p-5 rounded-r-lg shadow-xl opacity-0">
+          <div class="text-3xl font-extrabold text-white flex items-center">
+            <span class="count-overlay" data-target="4">0</span>
+          </div>
+          <div class="text-xs text-slate-300 font-bold uppercase tracking-widest mt-1">Production Facilities</div>
+        </div>
+
+        <div class="stat-overlay bg-[#0F172A]/85 backdrop-blur-sm border-l-4 border-amber-500 p-5 rounded-r-lg shadow-xl opacity-0">
+          <div class="text-3xl font-extrabold text-white flex items-center">
+            <span class="count-overlay" data-target="500">0</span><span class="text-amber-500 ml-1">+</span>
+          </div>
+          <div class="text-xs text-slate-300 font-bold uppercase tracking-widest mt-1">Global Clients</div>
+        </div>
+
+        <div class="stat-overlay bg-[#0F172A]/85 backdrop-blur-sm border-l-4 border-amber-500 p-5 rounded-r-lg shadow-xl opacity-0">
+          <div class="text-3xl font-extrabold text-white flex items-center">
+            <span class="count-overlay" data-target="10000">0</span><span class="text-amber-500 ml-1">+</span>
+          </div>
+          <div class="text-xs text-slate-300 font-bold uppercase tracking-widest mt-1">Projects</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. Stats Counter -->
+<section class="stats-section py-20 bg-[#0F172A] relative">
+  <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
+    @for (stat of stats; track stat.label) {
+      <div class="stat-card p-8 text-center bg-gradient-to-br from-[#1F2937] to-[#111827] rounded-3xl shadow-xl flex flex-col items-center justify-center transform transition-all duration-300 hover:-translate-y-2 border border-slate-700/50"
+           [style.borderTop]="'4px solid ' + stat.color">
+        
+        <div class="stat-icon mb-4 w-14 h-14 flex items-center justify-center rounded-2xl bg-white/5 transition-transform" 
+             [style.color]="stat.color"
+             [style.boxShadow]="'inset 0 0 10px ' + stat.color + '20'">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" [innerHTML]="stat.icon"></svg>
+        </div>
+
+        <div class="text-[48px] font-extrabold mb-1 flex justify-center items-center leading-none tracking-tight"
+             [style.color]="stat.color"
+             [style.textShadow]="'0 0 20px ' + stat.color + '60'">
+          <span class="count-up inline-block" [attr.data-target]="stat.value">0</span>
+          <span class="stat-suffix inline-block opacity-0 -translate-x-4">{{ stat.suffix }}</span>
+        </div>
+        <div class="text-xs md:text-sm uppercase tracking-widest text-slate-300 font-bold mt-3">{{ stat.label }}</div>
+      </div>
+    }
+  </div>
+</section>
+
+<!-- 4. Services Grid -->
+<!-- <section class="services-section py-24 md:py-32 bg-[#0F172A] relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
+    <div class="text-center mb-20">
+      <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Our Services</h2>
+      <div class="w-20 h-1 bg-amber-500 mx-auto rounded-full"></div>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8">
+      @for (service of services; track service.title) {
+        <div class="service-card group bg-gradient-to-br from-[#1F2937] to-[#111827] p-10 rounded-3xl shadow-lg transition-all duration-500 hover:scale-[1.05] hover:[box-shadow:0_0_20px_rgba(245,158,11,0.3)] border border-slate-700/50 flex flex-col justify-between">
+          
+          <div>
+            <div class="w-16 h-16 bg-amber-500/10 text-amber-500 rounded-2xl flex items-center justify-center mb-8 group-hover:rotate-[360deg] transition-all duration-700 shadow-inner">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" [innerHTML]="service.icon"></svg>
+            </div>
+            
+            <h3 class="text-2xl font-bold text-white mb-4">{{ service.title }}</h3>
+            <p class="text-slate-400 leading-relaxed mb-6">{{ service.description }}</p>
+
+            <ul class="space-y-3 mb-10">
+              @for (feature of service.features; track feature) {
+                <li class="flex items-center text-slate-300 text-sm font-medium">
+                  <span class="w-2 h-2 bg-amber-500 rounded-full mr-3 shadow-[0_0_5px_rgba(245,158,11,0.5)]"></span>
+                  {{ feature }}
+                </li>
+              }
+            </ul>
+          </div>
+          
+          <a routerLink="/services" class="inline-flex w-fit text-amber-500 font-bold hover:text-white transition-colors items-center gap-2 mt-auto pb-1 border-b border-transparent hover:border-white">
+            View Details <span class="group-hover:translate-x-1 transition-transform">→</span>
+          </a>
+          
+        </div>
+      }
+    </div>
+  </div>
+</section> -->
+
+<!-- 5. Featured Projects Carousel -->
+<section class="projects-carousel py-24 md:py-32 bg-white overflow-hidden">
+  <div class="max-w-[1440px] mx-auto px-6">
+    <div class="flex justify-between items-end mb-16 px-4">
+      <h2 class="text-4xl md:text-5xl font-bold">Featured Projects</h2>
+      <button routerLink="/portfolio" class="text-amber-500 font-bold flex items-center gap-2 hover:gap-4 transition-all">
+        All Projects <span class="text-2xl">→</span>
+      </button>
+    </div>
+    
+    <div class="swiper-container featured-swiper h-[600px] rounded-3xl overflow-hidden shadow-2xl group relative">
+      <div class="swiper-wrapper">
+        @for (project of projects; track project.title) {
+          <div class="swiper-slide relative">
+            <img
+              [appImageLoader]="project.image"
+              [fallbackImage]="'/building-bg.png'"
+              [alt]="project.title"
+              class="w-full h-full object-cover"
+              loading="lazy">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent flex flex-col justify-end p-12 lg:p-20">
+              <span class="text-amber-500 font-bold uppercase tracking-widest mb-4 block">{{ project.category }}</span>
+              <h3 class="text-4xl md:text-5xl font-bold text-white mb-6 max-w-2xl">{{ project.title }}</h3>
+              <button class="w-fit bg-amber-500 text-white px-8 py-3 rounded-full font-bold hover:bg-white hover:text-amber-500 transition-all">
+                View Project
+              </button>
+            </div>
+          </div>
+        }
+      </div>
+
+      <!-- Manual Navigation Arrows -->
+      <div class="swiper-button-prev !text-white !after:text-2xl transition-all opacity-0 group-hover:opacity-100 !left-10 bg-black/20 hover:bg-black/40 w-12 h-12 rounded-full !flex items-center justify-center backdrop-blur-sm"></div>
+      <div class="swiper-button-next !text-white !after:text-2xl transition-all opacity-0 group-hover:opacity-100 !right-10 bg-black/20 hover:bg-black/40 w-12 h-12 rounded-full !flex items-center justify-center backdrop-blur-sm"></div>
+
+      <div class="swiper-pagination !bottom-10 !flex !justify-start !px-20"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. Testimonials slider -->
+<section class="testimonials-section py-24 md:py-32 bg-slate-50">
+  <div class="max-w-4xl mx-auto px-6 text-center testimonials-container">
+    <svg class="w-16 h-16 text-amber-500 mx-auto mb-10 opacity-20" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H16.017C14.9124 8 14.017 7.10457 14.017 6V3H21.017V21H14.017ZM3.017 21V3H10.017V6C10.017 7.10457 9.12157 8 8.017 8H5.017C4.46472 8 4.017 8.44772 4.017 9V15C4.017 15.5523 4.46472 16 5.017 16H8.017C9.12157 16 10.017 16.8954 10.017 18V21H3.017Z" />
+    </svg>
+    <div class="swiper-container testimonial-swiper">
+      <div class="swiper-wrapper">
+        @for (item of testimonials; track item.name) {
+          <div class="swiper-slide">
+            <p class="text-2xl md:text-3xl text-slate-700 italic leading-snug mb-10">
+              "{{ item.text }}"
+            </p>
+            <div class="flex items-center justify-center gap-4">
+              <div class="w-16 h-16 rounded-full bg-slate-300 overflow-hidden">
+                <img
+                  [appImageLoader]="item.image"
+                  [fallbackImage]="'/building-bg.png'"
+                  [alt]="item.name"
+                  class="w-full h-full object-cover"
+                  loading="lazy">
+              </div>
+              <div class="text-left">
+                <h4 class="font-bold text-white">{{ item.name }}</h4>
+                <p class="text-sm text-slate-400">{{ item.role }}</p>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. CTA Section -->
+<section class="cta-section relative py-32 overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-br from-primary to-orange-600 -skew-y-3 origin-left scale-110"></div>
+  <div class="relative z-10 max-w-4xl mx-auto px-6 text-center text-white">
+    <h2 class="text-4xl md:text-6xl font-extrabold mb-10 leading-tight">
+      Ready to Bring Your <br> Idea to Life?
+    </h2>
+    <p class="text-xl text-white/80 mb-12 max-w-2xl mx-auto">
+      I'm currently accepting new projects and freelance opportunities. <br> Let's build something amazing together.
+    </p>
+    <div class="flex flex-wrap justify-center gap-6">
+      <button class="bg-white text-primary px-10 py-4 rounded-full font-bold text-lg hover:shadow-2xl transition-all duration-300">
+        Start a Project
+      </button>
+      <button class="border-2 border-white/50 text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-white/10 transition-all">
+        Get in Touch
+      </button>
+    </div>
+  </div>
+</section>
+
