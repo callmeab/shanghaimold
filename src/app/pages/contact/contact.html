@@ -20,28 +20,115 @@
 <!-- ══════════════════════════════════════════
      CONTACT GRID
 ══════════════════════════════════════════ -->
-<section class="contact-grid-section py-20 bg-white">
-  <div class="max-w-4xl mx-auto px-6 text-center">
+<section class="contact-grid-section py-20">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+      
+      <!-- Contact Info Cards -->
+      <div class="lg:col-span-5 space-y-6" data-aos="fade-right">
+        <div class="contact-info-card">
+          <div class="contact-info-card__icon">
+           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
+  <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"/>
+  <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+</svg>
 
-    <div class="mb-12" data-aos="fade-up">
-      <p class="text-amber-500 font-semibold uppercase tracking-widest text-sm">Chief Executive Officer</p>
-      <h2 class="text-4xl md:text-5xl font-bold text-slate-800 mt-2">Kevin Lee</h2>
-      <div class="w-16 h-1 bg-amber-500 mx-auto mt-6 rounded-full"></div>
+          </div>
+          <div>
+            <h4 class="contact-info-card__title">Headquarters</h4>
+            <p class="contact-info-card__text">123 Industrial Park, Manufacturing Zone, Shanghai, China</p>
+          </div>
+        </div>
+
+        <!-- <div class="contact-info-card">
+          <div class="contact-info-card__icon">
+           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16">
+  <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
+</svg>
+
+          </div>
+          <div>
+            <h4 class="contact-info-card__title">Phone Support</h4>
+            <p class="contact-info-card__text">+92 (XXX) XXX-XXXX</p>
+            <p class="contact-info-card__text text-xs text-slate-500">Mon-Fri: 8:00 AM - 6:00 PM</p>
+          </div>
+        </div> -->
+
+        <div class="contact-info-card">
+          <div class="contact-info-card__icon">
+           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+  <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l5.485 3.428a.5.5 0 0 0 .53 0L15 3.217V4a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H2Z"/>
+  <path d="m15 7.104-5.485 3.428a.5.5 0 0 1-.53 0L1 7.104V13a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7.104Z"/>
+</svg>
+
+          </div>
+          <div>
+            <h4 class="contact-info-card__title">Email Inquiries</h4>
+            <p class="contact-info-card__text">Sales@shanghaimold.com</p>
+          </div>
+        </div>
+
+        <div class="bg-gradient-to-br from-amber-500/10 to-transparent border border-amber-500/20 p-6 rounded-2xl">
+          <h4 class="text-white font-bold mb-2 flex items-center gap-2">
+           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-award" viewBox="0 0 16 16">
+  <path d="M9.669.864a1.5 1.5 0 0 0-1.338 0L3.665 5.23a1.5 1.5 0 0 0-.516 1.212V7.75A1.5 1.5 0 0 0 4.5 9h2.343a1.5 1.5 0 0 0 1.03-.443l3.762-3.762a1.5 1.5 0 0 0 .516-1.212V2.076a1.5 1.5 0 0 0-.516-1.212zm-1.338 5.995L3.665 4.83a.5.5 0 0 1 0-.707l4.66-4.66a.5.5 0 0 1 .707 0l4.66 4.66a.5.5 0 0 1 0 .707l-4.66 4.66a.5.5 0 0 1-.707 0zm1.338-3.995L8.38 8.518a.5.5 0 0 1-.707 0L4.5 4.83a.5.5 0 0 1 0-.707l4.66-4.66a.5.5 0 0 1 .707 0l4.66 4.66a.5.5 0 0 1 0 .707l-4.66 4.66a.5.5 0 0 1-.707 0L9.669 6.87a.5.5 0 0 1 0-1.338z"/>
+  <path d="M8 13.05L5.937 12.387a.5.5 0 0 0-.356.274L3.438 15.84a.5.5 0 0 1-.729.133l-1.964-1.964a.5.5 0 0 1 .133-.729l3.178-3.178a.5.5 0 0 0 .274-.356L8.05 8.95a.5.5 0 0 1 .5-.5h.386a.5.5 0 0 1 .5.5l.009 2.044a.5.5 0 0 0 .356.274L13.05 13.05a.5.5 0 0 1 .5.5v.386a.5.5 0 0 1-.5.5h-.386a.5.5 0 0 1-.5-.5l-.009-2.044a.5.5 0 0 0-.356-.274L8.551 12.55a.5.5 0 0 1-.5-.5v-.386a.5.5 0 0 1 .5-.5h.386z"/>
+</svg>
+
+          </h4>
+          <p class="text-xs text-slate-400">All manufacturing processes compliant with IATF 16949 and ISO 9001:2015 standards.</p>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="lg:col-span-7" data-aos="fade-left">
+        <div class="contact-form-card bg-[#374151] border border-white/5 p-8 md:p-10 rounded-3xl backdrop-blur-xl">
+          <form class="space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="form-group">
+                <label class="form-label">Full Name</label>
+                <input type="text" class="form-input" placeholder="John Doe">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Email Address</label>
+                <input type="email" class="form-input" placeholder="john@company.com">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="form-group">
+                <label class="form-label">Company Name</label>
+                <input type="text" class="form-input" placeholder="Organization Inc.">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Industry</label>
+                <select class="form-input">
+                  <option>Automotive</option>
+                  <option>Medical</option>
+                  <option>Electronics</option>
+                  <option>Consumer Products</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Message / Project Requirements</label>
+              <textarea class="form-input h-32 resize-none" placeholder="Describe your tooling or production needs..."></textarea>
+            </div>
+
+            <button type="submit" class="w-full py-4 bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
+  <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-5.595a.75.75 0 0 1 .168-.805L13.447 2.06a.5.5 0 0 1 .708 0l-8.618 8.618a.75.75 0 0 1-.805.168L3.6 11.797a.75.75 0 0 1-.124-1.329L14.547.11a.5.5 0 0 1 .54-.11zM6.636 10.07l2.761 4.815 2.483-5.961L6.636 10.07zm-1.76-3.907L9.572 3.682 2.807 8.439l2.399-4.255Z"/>
+</svg>
+
+             Send Inquiry
+            </button>
+          </form>
+        </div>
+      </div>
+
     </div>
-
-    <div class="prose prose-lg text-slate-600 mx-auto text-center" data-aos="fade-up" data-aos-delay="100">
-      <p class="whitespace-pre-line leading-relaxed">At Shanghai Mold, our unwavering commitment is to engineering excellence and precision manufacturing. We strive to lead the industry by delivering world-class mold solutions that empower businesses and redefine quality standards globally.
-
-      Our focus remains clear: bringing unparalleled expertise, reliability, and innovation to every project we undertake.</p>
-    </div>
-
-    <div class="mt-12" data-aos="fade-up" data-aos-delay="200">
-      <p class="text-xs text-gray-400 uppercase tracking-widest mb-3 font-semibold">Get in touch directly</p>
-      <a href="mailto:Sales@shanghaimold.com" class="inline-flex items-center text-lg font-medium text-slate-800 hover:text-amber-500 transition-colors duration-300">
-        <i class="bi bi-envelope-fill mr-2 text-amber-500"></i>Sales@shanghaimold.com
-      </a>
-    </div>
-
   </div>
 </section>
 

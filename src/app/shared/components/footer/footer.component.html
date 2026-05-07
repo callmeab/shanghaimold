@@ -3,16 +3,19 @@
     <div class="footer__grid">
       <!-- Column 1: Company Info -->
       <div class="footer__col" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
-      <img src="/logo-full.png" class="w-40" alt="">
-        <p class="footer__tagline text-amber-500 font-bold text-sm mb-2 uppercase tracking-widest">Engineering Excellence Since 1983</p>
-        <p class="footer__text">
-          Leading provider of injection molding solutions with global manufacturing presence and ISO certified quality standards.
+        <img src="/logo-full.png" class="w-40" alt="" />
+        <p class="footer__tagline text-amber-500 font-bold text-sm mb-2 uppercase tracking-widest">
+          Engineering Excellence Since 1983
         </p>
-        <div class="footer__socials">
+        <p class="footer__text">
+          Leading provider of injection molding solutions with global manufacturing presence and ISO
+          certified quality standards.
+        </p>
+        <!-- <div class="footer__socials">
           <a href="#" class="social-icon" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
           <a href="#" class="social-icon" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
           <a href="#" class="social-icon" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
-        </div>
+        </div> -->
       </div>
 
       <!-- Column 2: Quick Links -->
@@ -21,9 +24,15 @@
         <ul class="footer__links">
           <li><a routerLink="/" class="hover-underline">Home</a></li>
           <li><a routerLink="/services" class="hover-underline">Services</a></li>
-          <li class="pl-4 text-sm opacity-80"><a routerLink="/services" class="hover-underline">Mold Design</a></li>
-          <li class="pl-4 text-sm opacity-80"><a routerLink="/services" class="hover-underline">Manufacturing</a></li>
-          <li class="pl-4 text-sm opacity-80"><a routerLink="/services" class="hover-underline">Quality Control</a></li>
+          <li class="pl-4 text-sm opacity-80">
+            <a routerLink="/services" class="hover-underline">Mold Design</a>
+          </li>
+          <li class="pl-4 text-sm opacity-80">
+            <a routerLink="/services" class="hover-underline">Manufacturing</a>
+          </li>
+          <li class="pl-4 text-sm opacity-80">
+            <a routerLink="/services" class="hover-underline">Quality Control</a>
+          </li>
           <li><a routerLink="/portfolio" class="hover-underline">Portfolio</a></li>
           <li><a routerLink="/about" class="hover-underline">About Us</a></li>
           <li><a routerLink="/contact" class="hover-underline">Contact</a></li>
@@ -48,7 +57,18 @@
         <h3 class="footer__title">Contact Us</h3>
         <div class="footer__contact-info space-y-4">
           <div class="flex items-start gap-3">
-            <i class="bi bi-geo-alt-fill text-amber-500 mt-1"></i>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-geo-alt-fill text-amber-500 mt-1"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"
+              />
+            </svg>
             <p class="footer__text mb-0">123 Industrial Park, Manufacturing Zone</p>
           </div>
           <!-- <div class="flex items-center gap-3">
@@ -56,11 +76,33 @@
             <p class="footer__text mb-0">+86 190 0665 2617</p>
           </div> -->
           <div class="flex items-center gap-3">
-            <i class="bi bi-envelope-fill text-amber-500"></i>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-envelope-fill text-amber-500"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414zM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586zm3.436-.586L16 11.801V4.697z"
+              />
+            </svg>
             <p class="footer__text mb-0">Sales@shanghaimold.com</p>
           </div>
           <div class="flex items-center gap-3">
-            <i class="bi bi-clock-fill text-amber-500"></i>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-clock-fill text-amber-500"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m8-7a1 1 0 1 1-2 0 1 1 0 0 1 2 0M7 1c-.535 0-1 .432-1 .95v5.393c-.027.013-.055.026-.082.038A8.002 8.002 0 0 0 4 12a8 8 0 0 0 8 8 8 8 0 0 0 8-8 8 8 0 0 0-4-6.95V1.95A1 1 0 0 0 15 1h-8ZM5 10a3 3 0 1 1 0-6 3 3 0 0 1 0 6"
+              />
+            </svg>
             <p class="footer__text mb-0">Mon-Fri: 8:00 AM - 6:00 PM</p>
           </div>
         </div>
@@ -69,7 +111,9 @@
   </div>
 
   <div class="footer__bottom">
-    <div class="footer__container py-6 flex flex-col md:flex-row justify-between items-center gap-4">
+    <div
+      class="footer__container py-6 flex flex-col md:flex-row justify-between items-center gap-4"
+    >
       <p class="copyright mb-0">© 2026 Shanghai Mold. All Rights Reserved</p>
       <div class="certifications text-slate-400 text-xs font-bold tracking-widest">
         ISO 9001 | ISO 14001 | IATF 16949
@@ -92,4 +136,3 @@
     <i class="bi bi-arrow-up-short"></i>
   </button>
 </footer>
-
