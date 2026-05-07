@@ -26,30 +26,6 @@
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
       <!-- Contact Info Cards -->
       <div class="lg:col-span-5 space-y-6" data-aos="fade-right">
-        <div class="contact-info-card">
-          <div class="contact-info-card__icon">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="currentColor"
-              class="bi bi-geo-alt"
-              viewBox="0 0 16 16"
-            >
-              <path
-                d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"
-              />
-              <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
-            </svg>
-          </div>
-          <div>
-            <h4 class="contact-info-card__title">Headquarters</h4>
-            <p class="contact-info-card__text">
-              123 Industrial Park, Manufacturing Zone, Shanghai, China
-            </p>
-          </div>
-        </div>
-
         <!-- <div class="contact-info-card">
           <div class="contact-info-card__icon">
            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16">
@@ -119,31 +95,31 @@
         <div
           class="contact-form-card bg-[#374151] border border-white/5 p-8 md:p-10 rounded-3xl backdrop-blur-xl"
         >
-          <form class="space-y-6">
+          <form class="space-y-6" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div class="form-group">
                 <label class="form-label">Full Name</label>
-                <input type="text" class="form-input" placeholder="John Doe" />
+                <input type="text" formControlName="fullName" class="form-input" placeholder="John Doe" />
               </div>
               <div class="form-group">
                 <label class="form-label">Email Address</label>
-                <input type="email" class="form-input" placeholder="john@company.com" />
+                <input type="email" formControlName="email" class="form-input" placeholder="john@company.com" />
               </div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div class="form-group">
                 <label class="form-label">Company Name</label>
-                <input type="text" class="form-input" placeholder="Organization Inc." />
+                <input type="text" formControlName="companyName" class="form-input" placeholder="Organization Inc." />
               </div>
               <div class="form-group">
                 <label class="form-label">Industry</label>
-                <select class="form-input">
-                  <option>Automotive</option>
-                  <option>Medical</option>
-                  <option>Electronics</option>
-                  <option>Consumer Products</option>
-                  <option>Other</option>
+                <select class="form-input" formControlName="industry">
+                  <option value="Automotive">Automotive</option>
+                  <option value="Medical">Medical</option>
+                  <option value="Electronics">Electronics</option>
+                  <option value="Consumer Products">Consumer Products</option>
+                  <option value="Other">Other</option>
                 </select>
               </div>
             </div>
@@ -152,6 +128,7 @@
               <label class="form-label">Message / Project Requirements</label>
               <textarea
                 class="form-input h-32 resize-none"
+                formControlName="message"
                 placeholder="Describe your tooling or production needs..."
               ></textarea>
             </div>

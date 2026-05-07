@@ -62,56 +62,37 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   // ✅ Form submit function - YEH SABSE IMPORTANT HAI
-  onSubmit() {
-    if (this.contactForm.invalid) {
-      this.contactForm.markAllAsTouched();
-      return;
-    }
+// contact.component.ts
 
-    this.isSubmitting = true;
-    this.submitError = '';
-    this.cdr.detectChanges();
-
-    const formData = this.contactForm.value;
-
-    // ✅ EmailJS se bhejo - SIMPLE aur FREE
-    // Pehle EmailJS account banao: https://www.emailjs.com
-    const emailJsData = {
-      service_id: 'YOUR_SERVICE_ID',      // EmailJS dashboard se lo
-      template_id: 'YOUR_TEMPLATE_ID',    // EmailJS template se lo
-      user_id: 'YOUR_PUBLIC_KEY',         // EmailJS account se lo
-      template_params: {
-        from_name: formData.fullName,
-        from_email: formData.email,
-        company: formData.companyName,
-        industry: formData.industry,
-        message: formData.message,
-        to_email: 'Sales@shanghaimold.com'  // ✅ Aapki email
-      }
-    };
-
-    this.http.post('https://api.emailjs.com/api/v1.0/email/send', emailJsData)
-      .subscribe({
-        next: () => {
-          this.isSubmitting = false;
-          this.submitSuccess = true;
-          this.contactForm.reset();
-          this.cdr.detectChanges();
-
-          // 5 sec baad success message hatao
-          setTimeout(() => {
-            this.submitSuccess = false;
-            this.cdr.detectChanges();
-          }, 5000);
-        },
-        error: (err) => {
-          console.error('Email error:', err);
-          this.isSubmitting = false;
-          this.submitError = 'Failed to send message. Please try again or email directly.';
-          this.cdr.detectChanges();
-        }
-      });
+onSubmit(): void {
+  if (this.contactForm.invalid) {
+    this.contactForm.markAllAsTouched();
+    return;
   }
+
+  const formValues = this.contactForm.value;
+
+  const subject = `Inquiry from ${formValues.fullName || 'Website Visitor'}`;
+
+  const body = `
+Name: ${formValues.fullName}
+Email: ${formValues.email}
+Company: ${formValues.companyName}
+Industry: ${formValues.industry}
+Message: ${formValues.message}
+  `;
+
+  const mailtoLink = `mailto:Sales@shanghaimold.com?subject=${encodeURIComponent(
+    subject
+  )}&body=${encodeURIComponent(body)}`;
+
+  window.location.href = mailtoLink;
+
+  // Optional form reset
+  this.contactForm.reset({
+    industry: 'Automotive'
+  });
+}
 
   // ✅ Getter for easy form validation access
   get f() {
